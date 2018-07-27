@@ -22,6 +22,7 @@ OPENAPI 4.0 utilizes brand new version of BoostPHP2.0 as its core framework. Its
 |Apps|APPID存放表, 用来储存APPID以及密码, 认证信息, 权限信息等内容|
 
 2. 表内字段定义
+
 Users表
 
 |字段名|类型|解释|算法|注释|
@@ -37,14 +38,18 @@ Users表
 |userPermission|TEXT|用户权限|Original JSON|-|
 |userGroup|VARCHAR(30)|用户组|Original|-|
 
+
 UserGroups表
+
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
 |groupName|VARCHAR(30)|组名|Original|-|
 |groupDisplayName|VARCHAR(30)|组展示名|Original|-|
 |groupPermission|TEXT|组权限|Original JSON|-|
 
+
 Tokens表
+
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|
 |token|CHAR(32)|用户分配到的token|md5(SHA256(time(), Hash))|-|
@@ -52,20 +57,26 @@ Tokens表
 |relatedUser|VARCHAR(30)|用户名|Original|-|
 |tokenIP|VARCHAR(40)|用户登录时的IP|Original|Ipv4/Ipv6|
 
+
 Log表
+
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
 |logTime|INT|日志记录时间|time()|-|
 |logContent|TEXT|日志内容|Original|-|
 |logLevel|INT|日志等级|Original|1(Normal)-5(Severe)|
 
+
 UserAuth表
+
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
 |userName|VARCHAR(30)|用户名|Original|-|
 |authContent|TEXT|用户授权详情|Original JSON|-|
 
+
 Apps表
+
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
 |appID|VARCHAR(30)|应用使用的APPID|Original|-|
@@ -92,6 +103,7 @@ Apps表
 |Apps|Table for storing APPIDs and their passwords, permissions, etc.|
 
 2. In-table Fields definitions
+
 Users Table
 
 |Field|Data Type|Explanations|Algorithms|Notes|
@@ -107,14 +119,18 @@ Users Table
 |userPermission|TEXT|User Permissions|Original JSON|-|
 |userGroup|VARCHAR(30)|User Group|Original|-|
 
+
 UserGroups Table
+
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
 |groupName|VARCHAR(30)|GroupID|Original|-|
 |groupDisplayName|VARCHAR(30)|Group Display Name|Original|-|
 |groupPermission|TEXT|Group Permissions|Original JSON|-|
 
+
 Tokens Table
+
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
 |token|CHAR(32)|The token user gets|md5(SHA256(time(), Hash))|-|
@@ -122,20 +138,26 @@ Tokens Table
 |relatedUser|VARCHAR(30)|The user that has this token|Original|-|
 |tokenIP|VARCHAR(40)|The IP of the user when Logged in|Original|Ipv4/Ipv6|
 
+
 Log Table
+
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
 |logTime|INT|Time when logged|time()|-|
 |logContent|TEXT|Log content|Original|-|
 |logLevel|INT|Log Level|Original|1(Normal)-5(Severe)|
 
+
 UserAuth Table
+
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
 |userName|VARCHAR(30)|User Name|Original|-|
 |authContent|TEXT|User Auth Content|Original JSON|-|
 
+
 Apps Table
+
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
 |appID|VARCHAR(30)|APPID used by APP|Original|-|
@@ -206,13 +228,16 @@ Apps Table
 网址: /Apis/V040/Login.php
 方法: Post
 参数:
+
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
 |userName|string|用户名|-|
 |passWord|string|密码|-|
 |language|string|语言|zh-CN/en/zh|
+
 返回类型:JSON
 返回值:
+
 |键值|键值类型|简介|注解|
 |-|-|-|-|
 |succeed|bool|是否成功登录|-|
@@ -237,6 +262,7 @@ Apps Table
 网址: /Apis/V040/Register.php
 方法: Post
 参数:
+
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
 |userName|string|用户名|-|
@@ -244,12 +270,15 @@ Apps Table
 |email|string|邮箱|-|
 |settings|string|设置|JSON格式,可以只包含部分键值或设为空|
 |language|string|语言|"zh-CN"/"en"/"zh"|
+
 返回值:
+
 |键值|键值类型|简介|注解|
 |-|-|-|-|
 |succeed|bool|是否成功注册|-|
 |errorInfo\errCode|int|错误代码|-|
 |errorInfo\errDescription|string|错误详情|-|
+
 返回值例子:
 
 ```json
@@ -266,17 +295,21 @@ Apps Table
 网址: /Apis/V040/TokenVerification.php
 方法: POST
 参数:
+
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
 |userName|string|用户名|-|
 |token|string|Token|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
+
 返回值:
+
 |键值|键值类型|简介|注解|
 |-|-|-|-|
 |succeed|bool|token是否合法|-|
 |errorInfo\errCode|int|错误代码|-|
 |errorInfo\errDescription|string|错误详情|-|
+
 返回值例子:
 
 ```json
@@ -290,6 +323,7 @@ Apps Table
 ```
 
 ## API错误代码定义 \| API Error Code Definition
+
 |错误代码(ErrCode)|错误详情|Error Description|
 |-|-|-|
 |0|无错误|No error|
