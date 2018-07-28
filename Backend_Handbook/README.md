@@ -17,6 +17,7 @@ OPENAPI 4.0 utilizes brand new version of BoostPHP2.0 as its core framework. Its
 |Users|用户信息储存的表, 用来储存用户名密码, 第三方登录信息, 邮箱等内容|
 |UserGroups|用户组储存表|
 |Tokens|临时储存用户Token的表, 包括Token内容, Token持续时间等信息|
+|VerificationCodes|储存验证码的表|
 |Log|日志表|
 |UserAuth|用户授权应用列表存放表|
 |Apps|APPID存放表, 用来储存APPID以及密码, 认证信息, 权限信息等内容|
@@ -56,6 +57,17 @@ Tokens表
 |startTime|INT|token分配时间|time()|-|
 |relatedUser|VARCHAR(30)|用户名|Original|-|
 |tokenIP|VARCHAR(40)|用户登录时的IP|Original|Ipv4/Ipv6|
+
+
+VerificationCodes 表
+|字段名|类型|解释|算法|注释|
+|-|-|-|-|
+|actionType|INT|此验证码用来做什么?|Original|-|
+|veriCode|CHAR(32)|验证码|md5(userName+time()+Salt)|-|
+|issueTime|INT|此验证码被发出的日期|time()|-|
+|userName|VARCHAR(30)|用户名|Original|-|
+
+*对于VerificationCodes表, 每一行数据都会在他们过期后或被使用后被删除.*  
 
 
 Log表
@@ -98,6 +110,7 @@ Apps表
 |Users|Table where user informations get stored, used to store username, password, 3rd party login information, user email, etc.|
 |UserGroups|Table for storing user groups infos|
 |Tokens|Table for storing temporary user tokens, including token content, token duration, etc.|
+|VerificationCodes|Table for storing verification codes|
 |Log|Log Table|
 |UserAuth|Table for storing user auth infos for different apps|
 |Apps|Table for storing APPIDs and their passwords, permissions, etc.|
@@ -137,6 +150,17 @@ Tokens Table
 |startTime|INT|The time token was given out|time()|-|
 |relatedUser|VARCHAR(30)|The user that has this token|Original|-|
 |tokenIP|VARCHAR(40)|The IP of the user when Logged in|Original|Ipv4/Ipv6|
+
+
+VerificationCodes Table
+|Field|Data Type|Explanations|Algorithms|Notes|
+|-|-|-|-|-|
+|actionType|INT|What is this verification code used for?|Original|-|
+|veriCode|CHAR(32)|The code itself|md5(userName+time()+Salt)|-|
+|issueTime|INT|Time the code has been issued|time()|-|
+|userName|VARCHAR(30)|User owning this code|Original|-|
+
+*for the verificationcodes table, every row get deleted immediately after they expire or they are used for verification*  
 
 
 Log Table
@@ -213,6 +237,15 @@ Apps Table
     "ChangeUserPermissions": "true/false",
 }
 ```
+
+## 验证码类型定义 \| Verification Code Definition
+
+|代码(Code)|定义|Definition|
+|-|-|-|
+|1|更改密码|Change Password|
+|2|更改邮箱|Change Mail|
+|3|删除账号|Delete Account|
+|4|更改用户名|Change userName|
 
 ## APP权限JSON定义 \| APP Permission JSON Definition
 

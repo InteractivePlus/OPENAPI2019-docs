@@ -14,9 +14,12 @@ An official document for the standardization of the development of OPENAPI 2019,
 - [ ] [后端手册 \| Back-end Handbook](Backend_Handbook/README.md)
     - [x] 简要概括 \| Brief Introduction
     - [x] 数据库结构定义 \| DB Structure Definition
-    - [x] 用户设置定义 \| User Setting Definition
-    - [x] 第三方登录定义 \| Thrid Party Login Definition
-    - [x] 用户授权定义 \| UserAuth Definition
+    - [x] 用户设置JSON定义 \| User Setting JSON Definition
+    - [x] 第三方登录JSON定义 \| Thrid Party Login JSON Definition
+    - [x] 用户授权JSON定义 \| UserAuth JSON Definition
+    - [x] 用户/组 权限定义 \| User/Group Permission Definition
+    - [x] 验证码类型定义 \| Verification Code Definition
+    - [x] APP权限JSON定义 \| APP Permission JSON Definition 
     - [ ] API定义 \| API Declaration
     - [x] PHP命名规则 \| PHP Naming Rules
     - [x] API错误代码定义 \| API Error Code Definition
