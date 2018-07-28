@@ -5,6 +5,9 @@ This handbook standardizes the development process of BlueAirLive2.0 in detail.
 ## 简要概括 \| Brief Introduction
 BlueAirLive2.0 将使用Bootstrap + jQuery + FontAwesome + CustomJS编写, 技术栈接近形随意动2019官网.  
 一句口诀: 能用动态加载就用动态加载, 能概括成函数的就概括成函数, 公共的JS和部分数据放在一个特定的JS文件里面.  
+
+---
+
 BlueAirLive2.0 will utilize Bootstrap + jQuery + FontAwesome + CustomJS to write, its tech stack is similar to InterActive+ 2019 Website.  
 One Statement: Use hot loading if you can, generalize repetitive codes into functions if you can, public JS and data need to be put into a specific JS file.  
 

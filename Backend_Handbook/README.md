@@ -3,8 +3,8 @@
 This handbook standardizes the development process of OPENAPI 4.0 in detail.
 
 ## 简要概括 \| Brief Introduction
-OPENAPI 4.0 使用全新版本的 BoostPHP2.0 作为核心框架, 主要程序结构为OPENAPI 4.0类模块 + 外部API包装
-OPENAPI 4.0 utilizes brand new version of BoostPHP2.0 as its core framework. Its basic structure is a OPENAPI 4.0 class with a outside wrapper for giving API functionalities.
+OPENAPI 4.0 使用全新版本的 BoostPHP2.0 作为核心框架, 主要程序结构为OPENAPI 4.0类模块 + 外部API包装  
+OPENAPI 4.0 utilizes brand new version of BoostPHP2.0 as its core framework. Its basic structure is a OPENAPI 4.0 class with a outside wrapper for giving API functionalities.  
 
 ## 数据库结构定义 \| DB Structure Definition
 *数据表命名采用大驼峰命名法, 数据字段名采用小驼峰命名法*  
@@ -354,9 +354,9 @@ Apps Table
 ```
 
 **重发注册邮件**
-网址: /API/V040/userAPI/resendRegVerification.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/resendRegVerification.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -364,7 +364,7 @@ Apps Table
 |password|string|密码|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -372,7 +372,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|-|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -385,9 +385,9 @@ Apps Table
 ```
 
 **验证Token**
-网址: /API/V040/userAPI/tokenVerification.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/tokenVerification.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -395,7 +395,7 @@ Apps Table
 |token|string|Token|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -403,7 +403,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|-|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -416,9 +416,9 @@ Apps Table
 ```
 
 **更改设置**
-网址: /API/V040/userAPI/changeSetting.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/changeSetting.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -448,9 +448,9 @@ Apps Table
 ```
 
 **更改昵称**
-网址: /API/V040/userAPI/changeDisplayName.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/changeDisplayName.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -480,9 +480,9 @@ Apps Table
 }
 ```
 **授权应用**
-网址: /API/V040/userAPI/authAPPs.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/authAPPs.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -493,7 +493,7 @@ Apps Table
 |permissions|string|权限|为空则删除授权|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -501,7 +501,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|-|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -513,9 +513,9 @@ Apps Table
 }
 
 **更改邮箱**
-网址: /API/V040/userAPI/changeMail.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/changeMail.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -526,7 +526,7 @@ Apps Table
 |veriCode|string|更改邮箱所需的, 发到老邮箱的验证码|如果不是本人更改本人账号, 则是管理员, 无需veriCode|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -534,7 +534,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|-|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -547,9 +547,9 @@ Apps Table
 ```
 
 **管理员重置密码**
-网址: /API/V040/userAPI/adminResetPassword.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/adminResetPassword.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -581,9 +581,9 @@ Apps Table
 
 
 **更改密码**
-网址: /API/V040/userAPI/changePassword.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/changePassword.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -592,7 +592,7 @@ Apps Table
 |newPassword|string|新密码|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -600,7 +600,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|-|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -613,9 +613,9 @@ Apps Table
 ```
 
 **发送验证码**
-网址: /API/V040/userAPI/sendVerificationCode.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/sendVerificationCode.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -624,7 +624,7 @@ Apps Table
 |action|int|验证码用途|见验证码类型定义|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -632,7 +632,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|-|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -645,9 +645,9 @@ Apps Table
 ```
 
 **列出用户信息**
-网址: /API/V040/userAPI/viewUserInfo.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/viewUserInfo.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -656,7 +656,7 @@ Apps Table
 |viewingUserName|string|被查看用户名|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -665,7 +665,7 @@ Apps Table
 |errorInfo\errDescription|string|错误详情|-|
 |userInfo|object|用户详细信息|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -687,9 +687,9 @@ Apps Table
 *第三方应用看不见您的信息*
 
 **删除用户**
-网址: /API/V040/userAPI/deleteUser.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/deleteUser.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -699,7 +699,7 @@ Apps Table
 |verificationCode|string|删除用户验证码|如果删除的是别人, 说明是管理员, 不需要验证码|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -707,7 +707,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -720,9 +720,9 @@ Apps Table
 ```
 
 **修改用户权限**
-网址: /API/V040/userAPI/changeUserPermission.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/changeUserPermission.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -732,7 +732,7 @@ Apps Table
 |newPermission|string|新权限JSON|详见权限定义|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -740,7 +740,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -753,9 +753,9 @@ Apps Table
 ```
 
 **修改用户组**
-网址: /API/V040/userAPI/changeUserGroup.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/changeUserGroup.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -765,7 +765,7 @@ Apps Table
 |newGroup|string|新组名|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -773,7 +773,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -786,9 +786,9 @@ Apps Table
 ```
 
 **列出所有用户**
-网址: /API/V040/userAPI/listUsers.php
-方法: POST
-参数:
+网址: /API/V040/userAPI/listUsers.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -823,9 +823,9 @@ Apps Table
 ```
 
 **创建组**
-网址: /API/V040/groupAPI/createGroup.php
-方法: POST
-参数:
+网址: /API/V040/groupAPI/createGroup.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -835,7 +835,7 @@ Apps Table
 |groupDisplayName|string|新组展示名|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -843,7 +843,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -856,9 +856,9 @@ Apps Table
 ```
 
 **编辑组权限**
-网址: /API/V040/groupAPI/changeGroupPermission.php
-方法: POST
-参数:
+网址: /API/V040/groupAPI/changeGroupPermission.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -868,7 +868,7 @@ Apps Table
 |newPermission|string|新组权限|见组权限定义|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -876,7 +876,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -889,9 +889,9 @@ Apps Table
 ```
 
 **删除组**
-网址: /API/V040/groupAPI/deleteGroup.php
-方法: POST
-参数:
+网址: /API/V040/groupAPI/deleteGroup.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -900,7 +900,7 @@ Apps Table
 |groupName|string|组ID|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -908,7 +908,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -921,9 +921,9 @@ Apps Table
 ```
 
 **创建APPID**
-网址: /API/V040/PDKAPI/createAPPID.php
-方法: POST
-参数:
+网址: /API/V040/PDKAPI/createAPPID.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -933,7 +933,7 @@ Apps Table
 |appPass|string|APPID密钥|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -941,7 +941,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -954,9 +954,9 @@ Apps Table
 ```
 
 **修改APPID权限**
-网址: /API/V040/PDKAPI/changeAPPPermission.php
-方法: POST
-参数: 
+网址: /API/V040/PDKAPI/changeAPPPermission.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -966,7 +966,7 @@ Apps Table
 |newPermission|string|新权限JSON|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -974,7 +974,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -987,9 +987,9 @@ Apps Table
 ```
 
 **查看APPID信息**
-网址: /API/V040/PDKAPI/viewAPPIDInfo.php
-方法: POST
-参数: 
+网址: /API/V040/PDKAPI/viewAPPIDInfo.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -998,7 +998,7 @@ Apps Table
 |appID|string|APPID|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1007,7 +1007,7 @@ Apps Table
 |errorInfo\errDescription|string|错误详情|-|
 |appIDInfo|Object|APPID详细信息|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1036,9 +1036,9 @@ Apps Table
 ```
 
 **转移APPID所有权**
-网址: /API/V040/PDKAPI/changeAPPIDOwnership.php
-方法: POST
-参数: 
+网址: /API/V040/PDKAPI/changeAPPIDOwnership.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1048,7 +1048,7 @@ Apps Table
 |newOwner|string|APPID新所有者的username|newOwner必须是managerUsers中的一员|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1056,7 +1056,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1069,9 +1069,9 @@ Apps Table
 ```
 
 **邀请管理APPID**
-网址: /API/V040/PDKAPI/addManager.php
-方法: POST
-参数: 
+网址: /API/V040/PDKAPI/addManager.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1081,7 +1081,7 @@ Apps Table
 |newManager|string|APPID新添加的管理员的username|Username不能是adminUser, manageUsers或pendingUsers的一员|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1089,7 +1089,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1102,9 +1102,9 @@ Apps Table
 ```
 
 **接受管理APPID**
-网址: /API/V040/PDKAPI/acceptManager.php
-方法: POST
-参数: 
+网址: /API/V040/PDKAPI/acceptManager.php  
+方法: POST  
+参数:   
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1114,7 +1114,7 @@ Apps Table
 |acceptingUserName|string|被添加的userName|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1122,7 +1122,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1135,9 +1135,9 @@ Apps Table
 ```
 
 **删除管理员/退出APPID/不接受管理**
-网址: /API/V040/PDKAPI/leaveAPPID.php
-方法: POST
-参数: 
+网址: /API/V040/PDKAPI/leaveAPPID.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1147,7 +1147,7 @@ Apps Table
 |deletingUser|string|被删除的UserName|Username必须是manageUsers或pendingUsers的一员|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1155,7 +1155,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1168,9 +1168,9 @@ Apps Table
 ```
 
 **更改APPID展示名**
-网址: /API/V040/PDKAPI/changeAPPDisplayName.php
-方法: POST
-参数: 
+网址: /API/V040/PDKAPI/changeAPPDisplayName.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1180,7 +1180,7 @@ Apps Table
 |newDisplayName|string|新展示名称|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1188,7 +1188,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1201,9 +1201,9 @@ Apps Table
 ```
 
 **更改APPID回调地址**
-网址: /API/V040/PDKAPI/changeAPPLoginCallBack.php
-方法: POST
-参数: 
+网址: /API/V040/PDKAPI/changeAPPLoginCallBack.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1213,7 +1213,7 @@ Apps Table
 |newCallBack|string|新回调地址|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1221,7 +1221,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1234,9 +1234,9 @@ Apps Table
 ```
 
 **删除APPID**
-网址: /API/V040/PDKAPI/deleteAPPID.php
-方法: POST
-参数: 
+网址: /API/V040/PDKAPI/deleteAPPID.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1246,7 +1246,7 @@ Apps Table
 |veriCode|string|验证码|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1254,7 +1254,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1267,9 +1267,9 @@ Apps Table
 ```
 
 **列出APPID**
-网址: /API/V040/PDKAPI/listAPPID.php
-方法: POST
-参数: 
+网址: /API/V040/PDKAPI/listAPPID.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1279,7 +1279,7 @@ Apps Table
 |searchAPPID|string|查找APPID|可以为空, 则列出所有|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1288,7 +1288,7 @@ Apps Table
 |errorInfo\errDescription|string|错误详情|-|
 |appIDs|详细列表|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1308,9 +1308,9 @@ Apps Table
 
 ## 公用PDK API定义 \| Public PDK API Declaration
 **第三方登录(用于BlueAirLive调用)**
-网址: /API/V040/PDK/login.php
-方法: POST
-参数: 
+网址: /API/V040/PDK/login.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1320,7 +1320,7 @@ Apps Table
 |appCustomData|string|CustomData given to callback URL after successful login|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1329,7 +1329,7 @@ Apps Table
 |errorInfo\errDescription|string|错误详情|-|
 |callBackURL|string|成功登陆后回调URL|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1343,9 +1343,9 @@ Apps Table
 ```
 
 **第三方Token验证(用于第三方调用)**
-网址: /API/V040/PDK/checkToken.php
-方法: POST
-参数: 
+网址: /API/V040/PDK/checkToken.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1355,7 +1355,7 @@ Apps Table
 |appPass|string|APPID对应的密码|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1363,7 +1363,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1376,9 +1376,9 @@ Apps Table
 ```
 
 **第三方用户信息调取(用于第三方调用)**
-网址: /API/V040/PDK/getUserInfo.php
-方法: POST
-参数: 
+网址: /API/V040/PDK/getUserInfo.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1388,7 +1388,7 @@ Apps Table
 |appPass|string|APPID对应的密钥|-|
 |language|string|语言|"zh-CN"/"en"/"zh"|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1397,7 +1397,7 @@ Apps Table
 |errorInfo\errDescription|string|错误详情|-|
 |userInfo|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
@@ -1413,9 +1413,9 @@ Apps Table
 ```
 
 **第三方邮件发送(用于第三方调用)**
-网址: /API/V040/PDK/sendMail.php
-方法: POST
-参数: 
+网址: /API/V040/PDK/sendMail.php  
+方法: POST  
+参数:  
 
 |参数名|参数类型|简介|注解|
 |-|-|-|-|
@@ -1427,7 +1427,7 @@ Apps Table
 |mailTitle|string|邮件主题|-|
 |mailBody|string|邮件内容|-|
 
-返回值:
+返回值:  
 
 |键值|键值类型|简介|注解|
 |-|-|-|-|
@@ -1435,7 +1435,7 @@ Apps Table
 |errorInfo\errCode|int|错误代码|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情|-|
 
-返回值例子:
+返回值例子:  
 
 ```json
 {
