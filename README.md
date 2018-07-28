@@ -20,7 +20,8 @@ An official document for the standardization of the development of OPENAPI 2019,
     - [x] 用户/组 权限定义 \| User/Group Permission Definition
     - [x] 验证码类型定义 \| Verification Code Definition
     - [x] APP权限JSON定义 \| APP Permission JSON Definition 
-    - [ ] API定义 \| API Declaration
+    - [x] API定义 \| API Declaration
+    - [ ] 公用PDK API定义 \| Public PDK API Declaration
     - [x] PHP命名规则 \| PHP Naming Rules
     - [x] API错误代码定义 \| API Error Code Definition
     - [x] 进度控制 \| Progress Control
