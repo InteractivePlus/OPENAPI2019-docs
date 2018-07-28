@@ -60,6 +60,7 @@ Tokens表
 
 
 VerificationCodes 表
+
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|
 |actionType|INT|此验证码用来做什么?|Original|-|
@@ -153,6 +154,7 @@ Tokens Table
 
 
 VerificationCodes Table
+
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
 |actionType|INT|What is this verification code used for?|Original|-|
