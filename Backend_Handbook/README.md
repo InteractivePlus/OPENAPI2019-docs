@@ -613,7 +613,7 @@ URL: /API/V040/userAPI/changePassword.php
 }
 ```
 
-**发送验证码 \| Send Verification Code**
+**发送验证码 \| Send Verification Code**  
 URL: /API/V040/userAPI/sendVerificationCode.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -720,7 +720,7 @@ URL: /API/V040/userAPI/deleteUser.php
 }
 ```
 
-**修改用户权限 \| Change User Permission**
+**修改用户权限 \| Change User Permission**  
 URL: /API/V040/userAPI/changeUserPermission.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1234,7 +1234,7 @@ URL: /API/V040/PDKAPI/changeAPPLoginCallBack.php
 }
 ```
 
-**删除APPID**
+**删除APPID \| Delete APPID**  
 URL: /API/V040/PDKAPI/deleteAPPID.php  
 方法(Method): POST  
 参数(Parameters):  
