@@ -52,7 +52,7 @@ UserGroups表
 Tokens表  
 
 |字段名|类型|解释|算法|注释|
-|-|-|-|-|
+|-|-|-|-|-|
 |token|CHAR(32)|用户分配到的token|md5(SHA256(time(), Salt))|-|
 |startTime|INT|token分配时间|time()|-|
 |relatedUser|VARCHAR(30)|用户名|Original|-|
@@ -62,7 +62,7 @@ Tokens表
 VerificationCodes 表  
 
 |字段名|类型|解释|算法|注释|
-|-|-|-|-|
+|-|-|-|-|-|
 |actionType|INT|此验证码用来做什么?|Original|-|
 |veriCode|CHAR(32)|验证码|md5(userName+time()+Salt)|-|
 |issueTime|INT|此验证码被发出的日期|time()|-|
