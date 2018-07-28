@@ -11,7 +11,7 @@ An official document for the standardization of the development of OPENAPI 2019,
     - [x] 与服务器交互逻辑 \| Logic Interacting with Servers
     - [ ] 前端设计草图 \| Front-end Design Draft
     - [x] 页面内容命名规则 \| Content Naming Rules
-- [ ] [后端手册 \| Back-end Handbook](Backend_Handbook/README.md)
+- [x] [后端手册 \| Back-end Handbook](Backend_Handbook/README.md)
     - [x] 简要概括 \| Brief Introduction
     - [x] 数据库结构定义 \| DB Structure Definition
     - [x] 用户设置JSON定义 \| User Setting JSON Definition
@@ -21,7 +21,7 @@ An official document for the standardization of the development of OPENAPI 2019,
     - [x] 验证码类型定义 \| Verification Code Definition
     - [x] APP权限JSON定义 \| APP Permission JSON Definition 
     - [x] API定义 \| API Declaration
-    - [ ] 公用PDK API定义 \| Public PDK API Declaration
+    - [x] 公用PDK API定义 \| Public PDK API Declaration
     - [x] PHP命名规则 \| PHP Naming Rules
     - [x] API错误代码定义 \| API Error Code Definition
     - [x] 进度控制 \| Progress Control

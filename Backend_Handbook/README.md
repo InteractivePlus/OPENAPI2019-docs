@@ -287,9 +287,9 @@ Apps Table
 
 ## API定义 \| API Declaration
 **登录 \| Login**  
-URL: /API/V040/userAPI/login.php
-方法(Method): POST
-参数(Parameters):
+URL: /API/V040/userAPI/login.php  
+方法(Method): POST  
+参数(Parameters):  
 
 |参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
 |-|-|-|-|
@@ -297,8 +297,8 @@ URL: /API/V040/userAPI/login.php
 |password|string|密码(Password)|-|
 |language|string|语言(Language)|zh-CN/en/zh|
 
-返回类型 \| Return Type:JSON
-返回值 \| Return Values:
+返回类型 \| Return Type:JSON  
+返回值 \| Return Values:  
 
 |键值(Key)|键值类型(Key Type)|简介(Introduction)|注解(Note)|
 |-|-|-|-|
@@ -307,7 +307,7 @@ URL: /API/V040/userAPI/login.php
 |errorInfo\\errDescription|string|错误详情(Error Description)|-|
 |token|string|分配的token(token distributed by OPENAPI)|-|
 
-返回值例子 \| Return Value Example:
+返回值例子 \| Return Value Example:  
 
 ```json
 {
@@ -321,9 +321,9 @@ URL: /API/V040/userAPI/login.php
 ```
 
 **注册 \| Register**  
-URL: /API/V040/userAPI/register.php
-方法(Method): POST
-参数(Parameters):
+URL: /API/V040/userAPI/register.php  
+方法(Method): POST  
+参数(Parameters):  
 
 |参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
 |-|-|-|-|
@@ -333,7 +333,7 @@ URL: /API/V040/userAPI/register.php
 |settings|string|设置(Settings)|JSON格式,可以只包含部分键值或设为空(In the format of JSON, can only include partial keys or set to empty)|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
 
-返回值 \| Return Values:
+返回值 \| Return Values:  
 
 |键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
 |-|-|-|-|
@@ -341,7 +341,7 @@ URL: /API/V040/userAPI/register.php
 |errorInfo\errCode|int|错误代码(Error Code)|-|
 |errorInfo\errDescription|string|错误详情(Error Description)|-|
 
-返回值例子 \| Return Value Example:
+返回值例子 \| Return Value Example:  
 
 ```json
 {
