@@ -172,54 +172,54 @@ Apps Table
 
 ## 用户设置JSON定义 \| User Setting Definition
 
-```JSON
+```json
 {
-    "subscribeToMail":true/false,
-    "perferredLanguage":"zh-CN"/"en",
+    "subscribeToMail":"true/false",
+    "perferredLanguage":"zh-CN/en",
 }
 ```
 
 ## 第三方登录JSON定义 \| Thrid Party Login JSON Definition
 
-```JSON
+```json
 {
-    QQ:{
-        qqNumber:"XXXXXX"
+    "QQ":{
+        "qqNumber":"XXXXXX"
     },
-    WeChat:{
-        weChatID:"XXXXXX"
+    "WeChat":{
+        "weChatID":"XXXXXX"
     }
 }
 ```
 
 ## 用户授权JSON定义 \| User Auth JSON Definition
 
-```JSON
+```json
 {
-    APPID:{
-        "accessInfo": true/false,
-        "sendEmailToMe": true/false
+    "APPID":{
+        "accessInfo": "true/false",
+        "sendEmailToMe": "true/false"
     }
 }
 ```
 
 ## 用户/组权限JSON定义 \| User/Group Permission JSON Definition
 
-```JSON
+```json
 {
-    EditUsers: true/false,
-    ViewLogs: true/false,
-    ManageUserGroups: true/false,
-    ChangeUserPermissions: true/false,
+    "EditUsers": "true/false",
+    "ViewLogs": "true/false",
+    "ManageUserGroups": "true/false",
+    "ChangeUserPermissions": "true/false",
 }
 ```
 
 ## APP权限JSON定义 \| APP Permission JSON Definition
 
-```JSON
+```json
 {
-    "accessInfo":true/false,
-    "sendEmailToUsers": true/false
+    "accessInfo":"true/false",
+    "sendEmailToUsers": "true/false"
 }
 ```
 
