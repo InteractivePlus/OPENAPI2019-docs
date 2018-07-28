@@ -10,7 +10,7 @@ OPENAPI 4.0 utilizes brand new version of BoostPHP2.0 as its core framework. Its
 *数据表命名采用大驼峰命名法, 数据字段名采用小驼峰命名法*  
 *Naming tables using big camelcase, naming fields using small camelcase*  
 
-1. 数据库表定义
+1. 数据库表定义  
 
 |表名|表介绍|
 |-|-|
@@ -22,9 +22,9 @@ OPENAPI 4.0 utilizes brand new version of BoostPHP2.0 as its core framework. Its
 |UserAuth|用户授权应用列表存放表|
 |Apps|APPID存放表, 用来储存APPID以及密码, 认证信息, 权限信息等内容|
 
-2. 表内字段定义
+2. 表内字段定义  
 
-Users表
+Users表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
@@ -40,7 +40,7 @@ Users表
 |userGroup|VARCHAR(30)|用户组|Original|-|
 
 
-UserGroups表
+UserGroups表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
@@ -49,7 +49,7 @@ UserGroups表
 |groupPermission|TEXT|组权限|Original JSON|-|
 
 
-Tokens表
+Tokens表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|
@@ -59,7 +59,7 @@ Tokens表
 |tokenIP|VARCHAR(40)|用户登录时的IP|Original|Ipv4/Ipv6|
 
 
-VerificationCodes 表
+VerificationCodes 表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|
@@ -71,7 +71,7 @@ VerificationCodes 表
 *对于VerificationCodes表, 每一行数据都会在他们过期后或被使用后被删除.*  
 
 
-Log表
+Log表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
@@ -80,7 +80,7 @@ Log表
 |logLevel|INT|日志等级|Original|1(Normal)-5(Severe)|
 
 
-UserAuth表
+UserAuth表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
@@ -88,7 +88,7 @@ UserAuth表
 |authContent|TEXT|用户授权详情|Original JSON|-|
 
 
-Apps表
+Apps表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
@@ -104,7 +104,7 @@ Apps表
 ---
 
 
-1. Data Table Definition
+1. Data Table Definition  
 
 |Table Name|Table Introduction|
 |-|-|
@@ -116,9 +116,9 @@ Apps表
 |UserAuth|Table for storing user auth infos for different apps|
 |Apps|Table for storing APPIDs and their passwords, permissions, etc.|
 
-2. In-table Fields definitions
+2. In-table Fields definitions  
 
-Users Table
+Users Table  
 
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
@@ -134,7 +134,7 @@ Users Table
 |userGroup|VARCHAR(30)|User Group|Original|-|
 
 
-UserGroups Table
+UserGroups Table  
 
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
@@ -143,7 +143,7 @@ UserGroups Table
 |groupPermission|TEXT|Group Permissions|Original JSON|-|
 
 
-Tokens Table
+Tokens Table  
 
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
@@ -153,7 +153,7 @@ Tokens Table
 |tokenIP|VARCHAR(40)|The IP of the user when Logged in|Original|Ipv4/Ipv6|
 
 
-VerificationCodes Table
+VerificationCodes Table  
 
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
@@ -165,7 +165,7 @@ VerificationCodes Table
 *for the verificationcodes table, every row get deleted immediately after they expire or they are used for verification*  
 
 
-Log Table
+Log Table  
 
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
@@ -174,7 +174,7 @@ Log Table
 |logLevel|INT|Log Level|Original|1(Normal)-5(Severe)|
 
 
-UserAuth Table
+UserAuth Table  
 
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
@@ -182,7 +182,7 @@ UserAuth Table
 |authContent|TEXT|User Auth Content|Original JSON|-|
 
 
-Apps Table
+Apps Table  
 
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
