@@ -29,12 +29,12 @@ Users表
 |-|-|-|-|-|
 |userName|VARCHAR(30)|用户名|Original|-|
 |userDisplayName|VARCHAR(30)|用户展示名|Original|-|
-|passWord|CHAR(32)|密码|md5(SHA256(Original,Hash))|-|
+|passWord|CHAR(32)|密码|md5(SHA256(Original, Salt))|-|
 |email|VARCHAR(50)|邮箱|Original|-|
 |settings|TEXT|用户设置|Original JSON|-|
 |thirdAuth|TEXT|第三方登录|Original JSON|-|
 |emailVerified|TINYINT(1)|邮箱是否验证过|Original|值为1(true)或0(false)|
-|emailVerifyCode|CHAR(32)|邮箱验证码|md5(SHA256(userName + time(), Hash))|用户验证完毕后删除|
+|emailVerifyCode|CHAR(32)|邮箱验证码|md5(SHA256(userName + time(), Salt))|用户验证完毕后删除|
 |userPermission|TEXT|用户权限|Original JSON|-|
 |userGroup|VARCHAR(30)|用户组|Original|-|
 
@@ -52,7 +52,7 @@ Tokens表
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|
-|token|CHAR(32)|用户分配到的token|md5(SHA256(time(), Hash))|-|
+|token|CHAR(32)|用户分配到的token|md5(SHA256(time(), Salt))|-|
 |startTime|INT|token分配时间|time()|-|
 |relatedUser|VARCHAR(30)|用户名|Original|-|
 |tokenIP|VARCHAR(40)|用户登录时的IP|Original|Ipv4/Ipv6|
@@ -81,7 +81,7 @@ Apps表
 |-|-|-|-|-|
 |appID|VARCHAR(30)|应用使用的APPID|Original|-|
 |appDisplayName|VARCHAR(30)|应用展示名|Original|-|
-|appPass|CHAR(32)|APPID对应的密码|md5(SHA256(Original,Hash))|-|
+|appPass|CHAR(32)|APPID对应的密码|md5(SHA256(Original, Salt))|-|
 |appPermission|TEXT|应用可以调用的权限|Original JSON|-|
 |adminUser|VARCHAR(30)|注册APPID的用户|Original|-|
 |manageUsers|TEXT|可以管理此APPID的用户|Original JSON|\["userName1","userName2"\]|
@@ -110,12 +110,12 @@ Users Table
 |-|-|-|-|-|
 |userName|VARCHAR(30)|username|Original|-|
 |userDisplayName|VARCHAR(30)|User Display Name|Original|-|
-|passWord|CHAR(32)|password|md5(SHA256(Original,Hash))|-|
+|passWord|CHAR(32)|password|md5(SHA256(Original, Salt))|-|
 |email|VARCHAR(50)|user email|Original|-|
 |settings|TEXT|user settings|Original JSON|-|
 |thirdAuth|TEXT|3rd party apps login infos|Original JSON|-|
 |emailVerified|TINYINT(1)|has user's mail been varified?|Original|Value is either 1(true) or 0(false)|
-|emailVerifyCode|CHAR(32)|Verification Code for verifying email|md5(SHA256(userName + time(), Hash))|Deleted after verified the email|
+|emailVerifyCode|CHAR(32)|Verification Code for verifying email|md5(SHA256(userName + time(), Salt))|Deleted after verified the email|
 |userPermission|TEXT|User Permissions|Original JSON|-|
 |userGroup|VARCHAR(30)|User Group|Original|-|
 
@@ -133,7 +133,7 @@ Tokens Table
 
 |Field|Data Type|Explanations|Algorithms|Notes|
 |-|-|-|-|-|
-|token|CHAR(32)|The token user gets|md5(SHA256(time(), Hash))|-|
+|token|CHAR(32)|The token user gets|md5(SHA256(time(), Salt))|-|
 |startTime|INT|The time token was given out|time()|-|
 |relatedUser|VARCHAR(30)|The user that has this token|Original|-|
 |tokenIP|VARCHAR(40)|The IP of the user when Logged in|Original|Ipv4/Ipv6|
@@ -162,7 +162,7 @@ Apps Table
 |-|-|-|-|-|
 |appID|VARCHAR(30)|APPID used by APP|Original|-|
 |appDisplayName|VARCHAR(30)|APP Display Name|Original|-|
-|appPass|CHAR(32)|APPID's password|md5(SHA256(Original,Hash))|-|
+|appPass|CHAR(32)|APPID's password|md5(SHA256(Original, Salt))|-|
 |appPermission|TEXT|Permissions App Can Use|Original JSON|-|
 |adminUser|VARCHAR(30)|Users that register for this APPID|Original|-|
 |manageUsers|TEXT|Users that can manage this APPID|Original JSON|\["userName1","userName2"\]|
