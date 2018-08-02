@@ -7,220 +7,220 @@ OPENAPI 4.0 使用全新版本的 BoostPHP2.0 作为核心框架, 主要程序�
 OPENAPI 4.0 utilizes brand new version of BoostPHP2.0 as its core framework. Its basic structure is a OPENAPI 4.0 class with a outside wrapper for giving API functionalities.  
 
 ## 数据库结构定义 \| DB Structure Definition
-*数据表命名采用大驼峰命名法, 数据字段名采用小驼峰命名法*  
-*Naming tables using big camelcase, naming fields using small camelcase*  
+**数据表和数据字段名使用小写(参照MySQL手册)**  
+**table names and field names should be in lowercase, according to MYSQL Manual**  
 
 1. 数据库表定义  
 
 |表名|表介绍|
 |-|-|
-|Users|用户信息储存的表, 用来储存用户名密码, 第三方登录信息, 邮箱等内容|
-|UserGroups|用户组储存表|
-|Tokens|临时储存用户Token的表, 包括Token内容, Token持续时间等信息|
-|APPTokens|临时储存APPID访问用户信息的表, 包括Token内容, Token持续时间等信息|
-|VerificationCodes|储存验证码的表|
-|Log|日志表|
-|UserAuth|用户授权应用列表存放表|
-|Apps|APPID存放表, 用来储存APPID以及密码, 认证信息, 权限信息等内容|
+|users|用户信息储存的表, 用来储存用户名密码, 第三方登录信息, 邮箱等内容|
+|usergroups|用户组储存表|
+|tokens|临时储存用户Token的表, 包括Token内容, Token持续时间等信息|
+|apptokens|临时储存APPID访问用户信息的表, 包括Token内容, Token持续时间等信息|
+|verificationcodes|储存验证码的表|
+|log|日志表|
+|userauth|用户授权应用列表存放表|
+|apps|APPID存放表, 用来储存APPID以及密码, 认证信息, 权限信息等内容|
 
 2. 表内字段定义  
 
-Users表  
+users表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|userName|VARCHAR(30)|用户名(Username)|Original|-|
-|userDisplayName|VARCHAR(30)|用户展示名|Original|-|
-|password|CHAR(32)|密码|md5(SHA256(Original, Salt))|-|
-|email|VARCHAR(50)|邮箱|Original|-|
-|settings|TEXT|用户设置|Original JSON|-|
-|thirdAuth|TEXT|第三方登录|Original JSON|-|
-|emailVerified|TINYINT(1)|邮箱是否验证过|Original|值为1(true)或0(false)|
-|emailVerifyCode|CHAR(32)|邮箱验证码|md5(SHA256(userName + time(), Salt))|用户验证完毕后删除|
-|userPermission|TEXT|用户权限|Original JSON|-|
-|userGroup|VARCHAR(30)|用户组|Original|-|
-|regTime|INT|用户注册时间|time()|-|
+|username|VARCHAR(30)|用户名(username)|original|-|
+|userdisplayname|VARCHAR(30)|用户展示名|original|-|
+|password|CHAR(32)|密码|md5(sha256(original, salt))|-|
+|email|VARCHAR(50)|邮箱|original|-|
+|settings|TEXT|用户设置|original json|-|
+|thirdauth|TEXT|第三方登录|original json|-|
+|emailverified|TINYINT(1)|邮箱是否验证过|original|值为1(true)或0(false)|
+|emailverifycode|CHAR(32)|邮箱验证码|md5(sha256(username + time(), salt))|用户验证完毕后删除|
+|userpermission|TEXT|用户权限|original json|-|
+|usergroup|VARCHAR(30)|用户组|original|-|
+|regtime|INT|用户注册时间|time()|-|
 
 
-UserGroups表  
-
-|字段名|类型|解释|算法|注释|
-|-|-|-|-|-|
-|groupName|VARCHAR(30)|组名|Original|-|
-|groupDisplayName|VARCHAR(30)|组展示名|Original|-|
-|groupPermission|TEXT|组权限|Original JSON|-|
-
-
-Tokens 表  
+usergroups表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|token|CHAR(32)|用户分配到的token|md5(SHA256(time(), Salt))|-|
-|startTime|INT|token分配时间|time()|-|
-|relatedUser|VARCHAR(30)|用户名(Username)|Original|-|
-|tokenIP|VARCHAR(40)|用户登录时的IP|Original|Ipv4/Ipv6|
+|groupname|VARCHAR(30)|组名|original|-|
+|groupdisplayname|VARCHAR(30)|组展示名|original|-|
+|grouppermission|TEXT|组权限|original json|-|
 
 
-APPTokens 表
-
-|字段名|类型|解释|算法|注释|
-|-|-|-|-|-|
-|token|CHAR(32)|APPID分配到的token|md5(SHA256(time(), Salt))|-|
-|startTime|INT|token分配时间|time()|-|
-|relatedUser|VARCHAR(30)|用户名(Username)|Original|-|
-|relatedAPP|VARCHAR(30)|APPID|Original|-|
-|tokenIP|VARCHAR(40)|用户登录时的IP|Original|Ipv4/Ipv6|
-
-
-VerificationCodes 表  
+tokens 表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|actionType|INT|此验证码用来做什么?|Original|-|
-|veriCode|CHAR(32)|验证码|md5(userName+time()+Salt)|-|
-|issueTime|INT|此验证码被发出的日期|time()|-|
-|userName|VARCHAR(30)|用户名(Username)|Original|-|
-
-*对于VerificationCodes表, 每一行数据都会在他们过期后或被使用后被删除.*  
+|token|CHAR(32)|用户分配到的token|md5(sha256(time(), salt))|-|
+|starttime|INT|token分配时间|time()|-|
+|relateduser|VARCHAR(30)|用户名(username)|original|-|
+|tokenip|VARCHAR(40)|用户登录时的ip|original|ipv4/ipv6|
 
 
-Log表  
+apptokens 表
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|logTime|INT|日志记录时间|time()|-|
-|logContent|TEXT|日志内容|Original|-|
-|logLevel|INT|日志等级|Original|1(Normal)-5(Severe)|
+|token|CHAR(32)|appid分配到的token|md5(sha256(time(), salt))|-|
+|starttime|INT|token分配时间|time()|-|
+|relateduser|VARCHAR(30)|用户名(username)|original|-|
+|relatedapp|VARCHAR(30)|appid|original|-|
+|tokenip|VARCHAR(40)|用户登录时的ip|original|ipv4/ipv6|
 
 
-UserAuth表  
-
-|字段名|类型|解释|算法|注释|
-|-|-|-|-|-|
-|userName|VARCHAR(30)|用户名(Username)|Original|-|
-|authContent|TEXT|用户授权详情|Original JSON|-|
-
-
-Apps表  
+verificationcodes 表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|appID|VARCHAR(30)|应用使用的APPID|Original|-|
-|appDisplayName|VARCHAR(30)|应用展示名|Original|-|
-|appPass|CHAR(32)|APPID对应的密码|md5(SHA256(Original, Salt))|-|
-|appPermission|TEXT|应用可以调用的权限|Original JSON|-|
-|adminUser|VARCHAR(30)|注册APPID的用户|Original|-|
-|manageUsers|TEXT|可以管理此APPID的用户|Original JSON|\["userName1","userName2"\]|
-|pendingUsers|TEXT|等待接受管理此APPID权限的用户|Original JSON|\["userName1","userName2"\]|
-|appjumpBackPage|TINYTEXT|登录BlueAirLive账户后跳转回的位置|https://www.example.com/OPENAPILoginCallBack.php|
+|actiontype|INT|此验证码用来做什么?|original|-|
+|vericode|CHAR(32)|验证码|md5(username+time()+salt)|-|
+|issuetime|INT|此验证码被发出的日期|time()|-|
+|username|VARCHAR(30)|用户名(username)|original|-|
+
+*对于verificationcodes表, 每一行数据都会在他们过期后或被使用后被删除.*  
+
+
+log表  
+
+|字段名|类型|解释|算法|注释|
+|-|-|-|-|-|
+|logtime|INT|日志记录时间|time()|-|
+|logcontent|TEXT|日志内容|original|-|
+|loglevel|INT|日志等级|original|1(normal)-5(severe)|
+
+
+userauth表  
+
+|字段名|类型|解释|算法|注释|
+|-|-|-|-|-|
+|username|VARCHAR(30)|用户名(username)|original|-|
+|authcontent|TEXT|用户授权详情|original json|-|
+
+
+apps表  
+
+|字段名|类型|解释|算法|注释|
+|-|-|-|-|-|
+|appid|VARCHAR(30)|应用使用的appid|original|-|
+|appdisplayname|VARCHAR(30)|应用展示名|original|-|
+|apppass|CHAR(32)|appid对应的密码|md5(sha256(original, salt))|-|
+|apppermission|TEXT|应用可以调用的权限|original json|-|
+|adminuser|VARCHAR(30)|注册appid的用户|original|-|
+|manageusers|TEXT|可以管理此appid的用户|original json|\["username1","username2"\]|
+|pendingusers|TEXT|等待接受管理此appid权限的用户|original json|\["username1","username2"\]|
+|appjumpbackpage|TINYTEXT|登录blueairlive账户后跳转回的位置|https://www.example.com/openapilogincallback.php|
 
 
 ---
 
 
-1. Data Table Definition  
+1. data table definition  
 
-|Table Name|Table Introduction|
+|table name|table introduction|
 |-|-|
-|Users|Table where user informations get stored, used to store username, password, 3rd party login information, user email, etc.|
-|UserGroups|Table for storing user groups infos|
-|Tokens|Table for storing temporary user tokens, including token content, token duration, etc.|
-|APPTokens|Table for storing temporary appid tokens, including token content, token duration, etc.|
-|VerificationCodes|Table for storing verification codes|
-|Log|Log Table|
-|UserAuth|Table for storing user auth infos for different apps|
-|Apps|Table for storing APPIDs and their passwords, permissions, etc.|
+|users|table where user informations get stored, used to store username, password, 3rd party login information, user email, etc.|
+|usergroups|table for storing user groups infos|
+|tokens|table for storing temporary user tokens, including token content, token duration, etc.|
+|apptokens|table for storing temporary appid tokens, including token content, token duration, etc.|
+|verificationcodes|table for storing verification codes|
+|log|log table|
+|userauth|table for storing user auth infos for different apps|
+|apps|table for storing appids and their passwords, permissions, etc.|
 
-1. In-table Fields definitions  
+1. in-table fields definitions  
 
-Users Table  
+users table  
 
-|Field|Data Type|Explanations|Algorithms|Notes|
+|field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|userName|VARCHAR(30)|username|Original|-|
-|userDisplayName|VARCHAR(30)|User Display Name|Original|-|
-|password|CHAR(32)|password|md5(SHA256(Original, Salt))|-|
-|email|VARCHAR(50)|user email|Original|-|
-|settings|TEXT|user settings|Original JSON|-|
-|thirdAuth|TEXT|3rd party apps login infos|Original JSON|-|
-|emailVerified|TINYINT(1)|has user's mail been varified?|Original|Value is either 1(true) or 0(false)|
-|emailVerifyCode|CHAR(32)|Verification Code for verifying email|md5(SHA256(userName + time(), Salt))|Deleted after verified the email|
-|userPermission|TEXT|User Permissions|Original JSON|-|
-|userGroup|VARCHAR(30)|User Group|Original|-|
-|regTime|INT|User Register Time|time()|-|
+|username|VARCHAR(30)|username|original|-|
+|userdisplayname|VARCHAR(30)|user display name|original|-|
+|password|CHAR(32)|password|md5(sha256(original, salt))|-|
+|email|VARCHAR(50)|user email|original|-|
+|settings|TEXT|user settings|original json|-|
+|thirdauth|TEXT|3rd party apps login infos|original json|-|
+|emailverified|TINYINT(1)|has user's mail been varified?|original|value is either 1(true) or 0(false)|
+|emailverifycode|CHAR(32)|verification code for verifying email|md5(sha256(username + time(), salt))|deleted after verified the email|
+|userpermission|TEXT|user permissions|original json|-|
+|usergroup|VARCHAR(30)|user group|original|-|
+|regtime|INT|user register time|time()|-|
 
 
-UserGroups Table  
+usergroups table  
 
-|Field|Data Type|Explanations|Algorithms|Notes|
+|field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|groupName|VARCHAR(30)|GroupID|Original|-|
-|groupDisplayName|VARCHAR(30)|Group Display Name|Original|-|
-|groupPermission|TEXT|Group Permissions|Original JSON|-|
+|groupname|VARCHAR(30)|groupid|original|-|
+|groupdisplayname|VARCHAR(30)|group display name|original|-|
+|grouppermission|TEXT|group permissions|original json|-|
 
 
-Tokens Table  
+tokens table  
 
-|Field|Data Type|Explanations|Algorithms|Notes|
+|field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|token|CHAR(32)|The token user gets|md5(SHA256(time(), Salt))|-|
-|startTime|INT|The time token was given out|time()|-|
-|relatedUser|VARCHAR(30)|The user that has this token|Original|-|
-|tokenIP|VARCHAR(40)|The IP of the user when Logged in|Original|Ipv4/Ipv6|
+|token|CHAR(32)|the token user gets|md5(sha256(time(), salt))|-|
+|starttime|INT|the time token was given out|time()|-|
+|relateduser|VARCHAR(30)|the user that has this token|original|-|
+|tokenip|VARCHAR(40)|the ip of the user when logged in|original|ipv4/ipv6|
 
 
-APPTokens Table
+apptokens table
 
-|Field|Data Type|Explanations|Algorithms|Notes|
+|field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|token|CHAR(32)|The token given to APPID|md5(SHA256(time(), Salt))|-|
-|startTime|INT|token distribution time|time()|-|
-|relatedUser|VARCHAR(30)|The user that is related to this token|Original|-|
-|relatedAPP|VARCHAR(30)|The APPID that owns this token|Original|-|
-|tokenIP|VARCHAR(40)|The IP of the user when logged in|Original|Ipv4/Ipv6|
+|token|CHAR(32)|the token given to appid|md5(sha256(time(), salt))|-|
+|starttime|INT|token distribution time|time()|-|
+|relateduser|VARCHAR(30)|the user that is related to this token|original|-|
+|relatedapp|VARCHAR(30)|the appid that owns this token|original|-|
+|tokenip|VARCHAR(40)|the ip of the user when logged in|original|ipv4/ipv6|
 
 
-VerificationCodes Table  
+verificationcodes table  
 
-|Field|Data Type|Explanations|Algorithms|Notes|
+|field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|actionType|INT|What is this verification code used for?|Original|-|
-|veriCode|CHAR(32)|The code itself|md5(userName+time()+Salt)|-|
-|issueTime|INT|Time the code has been issued|time()|-|
-|userName|VARCHAR(30)|User owning this code|Original|-|
+|actiontype|INT|what is this verification code used for?|original|-|
+|vericode|CHAR(32)|the code itself|md5(username+time()+salt)|-|
+|issuetime|INT|time the code has been issued|time()|-|
+|username|VARCHAR(30)|user owning this code|original|-|
 
 *for the verificationcodes table, every row get deleted immediately after they expire or they are used for verification*  
 
 
-Log Table  
+log table  
 
-|Field|Data Type|Explanations|Algorithms|Notes|
+|field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|logTime|INT|Time when logged|time()|-|
-|logContent|TEXT|Log content|Original|-|
-|logLevel|INT|Log Level|Original|1(Normal)-5(Severe)|
+|logtime|INT|time when logged|time()|-|
+|logcontent|TEXT|log content|original|-|
+|loglevel|INT|log level|original|1(normal)-5(severe)|
 
 
-UserAuth Table  
+userauth table  
 
-|Field|Data Type|Explanations|Algorithms|Notes|
+|field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|userName|VARCHAR(30)|User Name|Original|-|
-|authContent|TEXT|User Auth Content|Original JSON|-|
+|username|VARCHAR(30)|user name|original|-|
+|authcontent|TEXT|user auth content|original json|-|
 
 
-Apps Table  
+apps table  
 
-|Field|Data Type|Explanations|Algorithms|Notes|
+|field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|appID|VARCHAR(30)|APPID used by APP|Original|-|
-|appDisplayName|VARCHAR(30)|APP Display Name|Original|-|
-|appPass|CHAR(32)|APPID's password|md5(SHA256(Original, Salt))|-|
-|appPermission|TEXT|Permissions App Can Use|Original JSON|-|
-|adminUser|VARCHAR(30)|Users that register for this APPID|Original|-|
-|manageUsers|TEXT|Users that can manage this APPID|Original JSON|\["userName1","userName2"\]|
-|pendingUsers|TEXT|Users that have been invited to manage this APPID but is still pending to accept|Original JSON|\["userName1","userName2"\]|
-|appjumpBackPage|TINYTEXT|The URL after user successfully logs into BlueAirLive|https://www.example.com/OPENAPILoginCallBack.php|
+|appid|VARCHAR(30)|appid used by app|original|-|
+|appdisplayname|VARCHAR(30)|app display name|original|-|
+|apppass|CHAR(32)|appid's password|md5(sha256(original, salt))|-|
+|apppermission|TEXT|permissions app can use|original json|-|
+|adminuser|VARCHAR(30)|users that register for this appid|original|-|
+|manageusers|TEXT|users that can manage this appid|original json|\["username1","username2"\]|
+|pendingusers|TEXT|users that have been invited to manage this appid but is still pending to accept|original json|\["username1","username2"\]|
+|appjumpbackpage|TINYTEXT|the url after user successfully logs into blueairlive|https://www.example.com/openapilogincallback.php|
 
 
 ## 用户设置JSON定义 \| User Setting Definition
@@ -291,7 +291,7 @@ URL: /API/V040/userAPI/login.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |password|string|密码(Password)|-|
@@ -300,7 +300,7 @@ URL: /API/V040/userAPI/login.php
 返回类型 \| Return Type:JSON  
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Key Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Key Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功登录(is the operation successful?)|-|
 |errorInfo\\errCode|int|错误代码(Error Code)|-|
@@ -325,7 +325,7 @@ URL: /API/V040/userAPI/register.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |password|string|密码(Password)|-|
@@ -335,7 +335,7 @@ URL: /API/V040/userAPI/register.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功注册(Is registration successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -358,7 +358,7 @@ URL: /API/V040/userAPI/resendRegVerification.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |password|string|密码(Password)|-|
@@ -366,7 +366,7 @@ URL: /API/V040/userAPI/resendRegVerification.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is operation successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -389,7 +389,7 @@ URL: /API/V040/userAPI/tokenVerification.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|Token|-|
@@ -397,7 +397,7 @@ URL: /API/V040/userAPI/tokenVerification.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|Token是否合法(Is token legal?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -420,7 +420,7 @@ URL: /API/V040/userAPI/changeSetting.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户登陆后获取的Token|-|
@@ -429,7 +429,7 @@ URL: /API/V040/userAPI/changeSetting.php
 
 返回值 \| Return Values:
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -452,7 +452,7 @@ URL: /API/V040/userAPI/changeDisplayName.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户登陆后获取的Token(Token gotten by user after logging in)|-|
@@ -462,7 +462,7 @@ URL: /API/V040/userAPI/changeDisplayName.php
 
 返回值 \| Return Values:
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -484,7 +484,7 @@ URL: /API/V040/userAPI/authAPPs.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户登陆后获取的Token(Token after logging in)|-|
@@ -495,7 +495,7 @@ URL: /API/V040/userAPI/authAPPs.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -518,7 +518,7 @@ URL: /API/V040/userAPI/changeMail.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户登陆后获取的Token(Token got by the user after logging in)|-|
@@ -529,7 +529,7 @@ URL: /API/V040/userAPI/changeMail.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -552,7 +552,7 @@ URL: /API/V040/userAPI/adminResetPassword.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户登陆后获取的Token(Token got by user after logging in)|-|
@@ -562,7 +562,7 @@ URL: /API/V040/userAPI/adminResetPassword.php
 
 返回值 \| Return Values:
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -586,7 +586,7 @@ URL: /API/V040/userAPI/changePassword.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |veriCode|string|更改密码所需的, 发到邮箱的验证码(Verification code send to user's email)|-|
@@ -595,7 +595,7 @@ URL: /API/V040/userAPI/changePassword.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -618,7 +618,7 @@ URL: /API/V040/userAPI/sendVerificationCode.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by user after logging in)|有时需要有时不需要,见验证码类型定义(it is needed depended on different vericode types)|
@@ -627,7 +627,7 @@ URL: /API/V040/userAPI/sendVerificationCode.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -650,7 +650,7 @@ URL: /API/V040/userAPI/viewUserInfo.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -659,7 +659,7 @@ URL: /API/V040/userAPI/viewUserInfo.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|见验证码类型定义|
@@ -692,7 +692,7 @@ URL: /API/V040/userAPI/deleteUser.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -702,7 +702,7 @@ URL: /API/V040/userAPI/deleteUser.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|见验证码类型定义|
@@ -725,7 +725,7 @@ URL: /API/V040/userAPI/changeUserPermission.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -735,7 +735,7 @@ URL: /API/V040/userAPI/changeUserPermission.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -758,7 +758,7 @@ URL: /API/V040/userAPI/changeUserGroup.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -768,7 +768,7 @@ URL: /API/V040/userAPI/changeUserGroup.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|见验证码类型定义|
@@ -791,7 +791,7 @@ URL: /API/V040/userAPI/listUsers.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -800,7 +800,7 @@ URL: /API/V040/userAPI/listUsers.php
 
 返回值 \| Return Values:
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -828,7 +828,7 @@ URL: /API/V040/groupAPI/createGroup.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -838,7 +838,7 @@ URL: /API/V040/groupAPI/createGroup.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -861,7 +861,7 @@ URL: /API/V040/groupAPI/changeGroupPermission.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -871,7 +871,7 @@ URL: /API/V040/groupAPI/changeGroupPermission.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -894,7 +894,7 @@ URL: /API/V040/groupAPI/deleteGroup.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -903,7 +903,7 @@ URL: /API/V040/groupAPI/deleteGroup.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -926,7 +926,7 @@ URL: /API/V040/PDKAPI/createAPPID.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -936,7 +936,7 @@ URL: /API/V040/PDKAPI/createAPPID.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -959,7 +959,7 @@ URL: /API/V040/PDKAPI/changeAPPPermission.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -969,7 +969,7 @@ URL: /API/V040/PDKAPI/changeAPPPermission.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -992,7 +992,7 @@ URL: /API/V040/PDKAPI/viewAPPIDInfo.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -1001,7 +1001,7 @@ URL: /API/V040/PDKAPI/viewAPPIDInfo.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -1041,7 +1041,7 @@ URL: /API/V040/PDKAPI/changeAPPIDOwnership.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -1051,7 +1051,7 @@ URL: /API/V040/PDKAPI/changeAPPIDOwnership.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -1074,7 +1074,7 @@ URL: /API/V040/PDKAPI/addManager.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -1084,7 +1084,7 @@ URL: /API/V040/PDKAPI/addManager.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -1107,7 +1107,7 @@ URL: /API/V040/PDKAPI/acceptManager.php
 方法(Method): POST  
 参数(Parameters):   
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -1117,7 +1117,7 @@ URL: /API/V040/PDKAPI/acceptManager.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -1140,7 +1140,7 @@ URL: /API/V040/PDKAPI/leaveAPPID.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -1150,7 +1150,7 @@ URL: /API/V040/PDKAPI/leaveAPPID.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -1173,7 +1173,7 @@ URL: /API/V040/PDKAPI/changeAPPDisplayName.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -1183,7 +1183,7 @@ URL: /API/V040/PDKAPI/changeAPPDisplayName.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -1206,7 +1206,7 @@ URL: /API/V040/PDKAPI/changeAPPLoginCallBack.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -1216,7 +1216,7 @@ URL: /API/V040/PDKAPI/changeAPPLoginCallBack.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -1239,7 +1239,7 @@ URL: /API/V040/PDKAPI/deleteAPPID.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -1249,7 +1249,7 @@ URL: /API/V040/PDKAPI/deleteAPPID.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -1272,7 +1272,7 @@ URL: /API/V040/PDKAPI/listAPPID.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
@@ -1282,7 +1282,7 @@ URL: /API/V040/PDKAPI/listAPPID.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -1313,7 +1313,7 @@ URL: /API/V040/PDK/login.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |password|string|密码(Password)|-|
@@ -1323,7 +1323,7 @@ URL: /API/V040/PDK/login.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|见验证码类型定义|
@@ -1348,7 +1348,7 @@ URL: /API/V040/PDK/checkToken.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|分配的Token(Token distributed to 3rd party)|-|
@@ -1358,7 +1358,7 @@ URL: /API/V040/PDK/checkToken.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|Token是否合法(Is token legal?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
@@ -1381,7 +1381,7 @@ URL: /API/V040/PDK/getUserInfo.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|分配的Token(Token got by 3rd party)|-|
@@ -1391,7 +1391,7 @@ URL: /API/V040/PDK/getUserInfo.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|=|
@@ -1418,7 +1418,7 @@ URL: /API/V040/PDK/sendMail.php
 方法(Method): POST  
 参数(Parameters):  
 
-|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|分配的Token(Token got by 3rd party)|-|
@@ -1430,7 +1430,7 @@ URL: /API/V040/PDK/sendMail.php
 
 返回值 \| Return Values:  
 
-|键值(Key)|键值类型(Type)|简介(Introduction)|注解(Note)|
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|-|
