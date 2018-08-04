@@ -55,7 +55,7 @@ tokens 表
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|token|CHAR(32)|用户分配到的token|md5(sha256(time(), salt))|-|
+|token|CHAR(32)|用户分配到的token|md5(sha256(relateduser + rand(0, 10000) + time(), salt))|-|
 |starttime|INT|token分配时间|time()|-|
 |relateduser|VARCHAR(30)|用户名(username)|original|-|
 |tokenip|VARCHAR(40)|用户登录时的ip|original|ipv4/ipv6|
@@ -65,7 +65,7 @@ apptokens 表
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|token|CHAR(32)|appid分配到的token|md5(sha256(time(), salt))|-|
+|token|CHAR(32)|appid分配到的token|md5(sha256(relatedapp + rand(0,10000) + time(), salt))|-|
 |starttime|INT|token分配时间|time()|-|
 |relateduser|VARCHAR(30)|用户名(username)|original|-|
 |relatedapp|VARCHAR(30)|appid|original|-|
@@ -163,7 +163,7 @@ tokens table
 
 |field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|token|CHAR(32)|the token user gets|md5(sha256(time(), salt))|-|
+|token|CHAR(32)|the token user gets|md5(sha256(relateduser + rand(0,10000) + time(), salt))|-|
 |starttime|INT|the time token was given out|time()|-|
 |relateduser|VARCHAR(30)|the user that has this token|original|-|
 |tokenip|VARCHAR(40)|the ip of the user when logged in|original|ipv4/ipv6|
@@ -173,7 +173,7 @@ apptokens table
 
 |field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|token|CHAR(32)|the token given to appid|md5(sha256(time(), salt))|-|
+|token|CHAR(32)|the token given to appid|md5(sha256(relatedapp + rand(0,10000) + time(), salt))|-|
 |starttime|INT|token distribution time|time()|-|
 |relateduser|VARCHAR(30)|the user that is related to this token|original|-|
 |relatedapp|VARCHAR(30)|the appid that owns this token|original|-|
