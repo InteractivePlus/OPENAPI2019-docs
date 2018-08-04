@@ -33,11 +33,11 @@ users表
 |userdisplayname|VARCHAR(30)|用户展示名|original|-|
 |password|CHAR(32)|密码|md5(sha256(original, salt))|-|
 |email|VARCHAR(50)|邮箱|original|-|
-|settings|TEXT|用户设置|original json|-|
-|thirdauth|TEXT|第三方登录|original json|-|
+|settings|TEXT|用户设置|gzcompress(original json)|-|
+|thirdauth|TEXT|第三方登录|gzcompress(original json)|-|
 |emailverified|TINYINT(1)|邮箱是否验证过|original|值为1(true)或0(false)|
 |emailverifycode|CHAR(32)|邮箱验证码|md5(sha256(username + time(), salt))|用户验证完毕后删除|
-|userpermission|TEXT|用户权限|original json|-|
+|userpermission|TEXT|用户权限|gzcompress(original json)|-|
 |usergroup|VARCHAR(30)|用户组|original|-|
 |regtime|INT|用户注册时间|time()|-|
 
@@ -48,7 +48,7 @@ usergroups表
 |-|-|-|-|-|
 |groupname|VARCHAR(30)|组名|original|-|
 |groupdisplayname|VARCHAR(30)|组展示名|original|-|
-|grouppermission|TEXT|组权限|original json|-|
+|grouppermission|TEXT|组权限|gzcompress(original json)|-|
 
 
 tokens 表  
@@ -98,7 +98,7 @@ userauth表
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
 |username|VARCHAR(30)|用户名(username)|original|-|
-|authcontent|TEXT|用户授权详情|original json|-|
+|authcontent|TEXT|用户授权详情|gzcompress(original json)|-|
 
 
 apps表  
@@ -141,11 +141,11 @@ users table
 |userdisplayname|VARCHAR(30)|user display name|original|-|
 |password|CHAR(32)|password|md5(sha256(original, salt))|-|
 |email|VARCHAR(50)|user email|original|-|
-|settings|TEXT|user settings|original json|-|
-|thirdauth|TEXT|3rd party apps login infos|original json|-|
+|settings|TEXT|user settings|gzcompress(original json)|-|
+|thirdauth|TEXT|3rd party apps login infos|gzcompress(original json)|-|
 |emailverified|TINYINT(1)|has user's mail been varified?|original|value is either 1(true) or 0(false)|
 |emailverifycode|CHAR(32)|verification code for verifying email|md5(sha256(username + time(), salt))|deleted after verified the email|
-|userpermission|TEXT|user permissions|original json|-|
+|userpermission|TEXT|user permissions|gzcompress(original json)|-|
 |usergroup|VARCHAR(30)|user group|original|-|
 |regtime|INT|user register time|time()|-|
 
@@ -156,7 +156,7 @@ usergroups table
 |-|-|-|-|-|
 |groupname|VARCHAR(30)|groupid|original|-|
 |groupdisplayname|VARCHAR(30)|group display name|original|-|
-|grouppermission|TEXT|group permissions|original json|-|
+|grouppermission|TEXT|group permissions|gzcompress(original json)|-|
 
 
 tokens table  
@@ -206,7 +206,7 @@ userauth table
 |field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
 |username|VARCHAR(30)|user name|original|-|
-|authcontent|TEXT|user auth content|original json|-|
+|authcontent|TEXT|user auth content|gzcompress(original json)|-|
 
 
 apps table  
