@@ -113,7 +113,7 @@ apps表
 |manageusers|TEXT|可以管理此appid的用户|original json|\["username1","username2"\]|
 |pendingusers|TEXT|等待接受管理此appid权限的用户|original json|\["username1","username2"\]|
 |appjumpbackpage|TINYTEXT|登录blueairlive账户后跳转回的位置|https://www.example.com/openapilogincallback.php|
-
+|userdeletedcallback|TINYTEXT|用户BlueAirLive账户删除/取消授权后的回调|https://www.example.com/openapidelcallback.php|
 
 ---
 
@@ -220,8 +220,8 @@ apps table
 |adminuser|VARCHAR(30)|users that register for this appid|original|-|
 |manageusers|TEXT|users that can manage this appid|original json|\["username1","username2"\]|
 |pendingusers|TEXT|users that have been invited to manage this appid but is still pending to accept|original json|\["username1","username2"\]|
-|appjumpbackpage|TINYTEXT|the url after user successfully logs into blueairlive|https://www.example.com/openapilogincallback.php|
-
+|appjumpbackpage|TINYTEXT|the url called back after user successfully logs into blueairlive|https://www.example.com/openapilogincallback.php|
+|userdeletedcallback|TINYTEXT|The url called back after user deleted his BAL account or he canceled auth for this app|https://www.example.com/openapidelcallback.php|
 
 ## 用户设置JSON定义 \| User Setting Definition
 
@@ -1318,7 +1318,6 @@ URL: /API/V040/PDK/login.php
 |userName|string|用户名(Username)|-|
 |password|string|密码(Password)|-|
 |appID|string|APPID|-|
-|appCustomData|string|第三方给的自定数据, 回调时自动附上(CustomData given to callback URL after successful login)|-|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
 
 返回值 \| Return Values:  
@@ -1328,6 +1327,7 @@ URL: /API/V040/PDK/login.php
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情(Error Description)|-|
+|token|string|成功分配的Token(Token distributed after a successful login)|-|
 |callBackURL|string|成功登陆后回调URL(URL redirected after successful login)|-|
 
 返回值例子 \| Return Value Examples:  
@@ -1339,9 +1339,22 @@ URL: /API/V040/PDK/login.php
         "errCode": 0,
         "errDescription": "No error"
     },
-    "callBackURL": "https://www.example.com/PDKLoginCB.php?token=XXX"
+    "token": "XXX",
+    "callBackURL": "https://www.example.com/PDKLoginCB.php"
 }
 ```
+
+**第三方登录跳转(用于BlueAirLive调用) \| 3rd Party Login Jump(For BlueAirLive to Call)**  
+URL: 用户自定义URL \| User-defined URL  
+方法(Method): GET  
+参数(Parameters):  
+
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|token|string|成功登录后的APP用Token(APP's token for accessing user data after successfully login in)|-|
+|customData|string|登录时APP指定的customData|-|
+
+*User will be directed to this page after successfully authing to the website*  
 
 **第三方Token验证(用于第三方调用) \| 3rd Party Token Verification(For 3rd party to call)**  
 URL: /API/V040/PDK/checkToken.php  
