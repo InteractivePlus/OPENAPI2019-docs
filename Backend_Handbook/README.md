@@ -1477,8 +1477,10 @@ URL: /API/V040/PDK/sendMail.php
 ## PHP命名规则 \| PHP Naming Rules
 1. 对于OpenAPI 4.0类, 所有函数需要被namespace OPENAPI40包裹
 2. 函数命名小驼峰, 类命名大驼峰
+3. 所有用来声明函数作用域的大括号与函数声明放在一行内
 
 ---
 
 1. For the OpenAPI 4.0 Class, all functions needs to be bounded by OPENAPI40 namespace
 2. Use small camelcase for function naming, big camelcase for class naming.
+3. All parantheses for function scope declarations should be put together on the same line with the function declaration itself.
