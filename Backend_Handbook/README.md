@@ -1355,10 +1355,10 @@ URL: 用户自定义URL \| User-defined URL
 
 *User will be directed to this page after successfully authing to the website*  
 
-**第三方用户删除通知(用于OPENAPI调用) \| 3rd Party User Deletion API(For OPENAPI to Call)**
-URL: 用户自定义URL \| User-defined URL
-方法(Method): POST
-参数(Parameters): 
+**第三方用户删除通知(用于OPENAPI调用) \| 3rd Party User Deletion API(For OPENAPI to Call)**  
+URL: 用户自定义URL \| User-defined URL  
+方法(Method): POST  
+参数(Parameters):  
 
 |参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
 |-|-|-|-|
