@@ -1315,7 +1315,7 @@ URL: /API/V040/PDK/login.php
 |参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
-|password|string|密码(Password)|-|
+|token|string|用户token(token of the user)|-|
 |appID|string|APPID|-|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
 
@@ -1326,7 +1326,7 @@ URL: /API/V040/PDK/login.php
 |succeed|bool|是否成功(Is Operation Successful?)|-|
 |errorInfo\errCode|int|错误代码(Error Code)|见验证码类型定义|
 |errorInfo\errDescription|string|错误详情(Error Description)|-|
-|token|string|成功分配的Token(Token distributed after a successful login)|-|
+|appToken|string|成功分配的APPToken(APPToken distributed after a successful login)|-|
 |callBackURL|string|成功登陆后回调URL(URL redirected after successful login)|-|
 
 返回值例子 \| Return Value Examples:  
@@ -1338,7 +1338,7 @@ URL: /API/V040/PDK/login.php
         "errCode": 0,
         "errDescription": "No error"
     },
-    "token": "XXX",
+    "appToken": "XXX",
     "callBackURL": "https://www.example.com/PDKLoginCB.php"
 }
 ```
@@ -1350,10 +1350,21 @@ URL: 用户自定义URL \| User-defined URL
 
 |参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
-|token|string|成功登录后的APP用Token(APP's token for accessing user data after successfully login in)|-|
+|appToken|string|成功登录后的APP用Token(APP's token for accessing user data after successfully login in)|-|
 |customData|string|登录时APP指定的customData|-|
 
 *User will be directed to this page after successfully authing to the website*  
+
+**第三方用户删除通知(用于OPENAPI调用) \| 3rd Party User Deletion API(For OPENAPI to Call)**
+URL: 用户自定义URL \| User-defined URL
+方法(Method): POST
+参数(Parameters): 
+
+|参数名(Parameter)|参数类型(Type)|简介(Introduction)|注解(Note)|
+|-|-|-|-|
+|deletedUser|string|用户删除的用户名(The username that got deleted)|-|
+
+*OPENAPI will curl to this page after a user wants to delete his/her account or he/she canceled the auth for the app*  
 
 **第三方Token验证(用于第三方调用) \| 3rd Party Token Verification(For 3rd party to call)**  
 URL: /API/V040/PDK/checkToken.php  
@@ -1363,7 +1374,7 @@ URL: /API/V040/PDK/checkToken.php
 |参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
-|token|string|分配的Token(Token distributed to 3rd party)|-|
+|appToken|string|分配的Token(Token distributed to 3rd party)|-|
 |appID|string|APPID|-|
 |appPass|string|APPID对应的密码(APPID's Password)|-|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
@@ -1396,7 +1407,7 @@ URL: /API/V040/PDK/getUserInfo.php
 |参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
-|token|string|分配的Token(Token got by 3rd party)|-|
+|appToken|string|分配的Token(Token got by 3rd party)|-|
 |appID|string|APPID|-|
 |appPass|string|APPID对应的密钥(APPID's Password)|-|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
@@ -1433,7 +1444,7 @@ URL: /API/V040/PDK/sendMail.php
 |参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
-|token|string|分配的Token(Token got by 3rd party)|-|
+|appToken|string|分配的Token(Token got by 3rd party)|-|
 |appID|string|APPID|-|
 |appPass|string|APPID对应的密钥(APPID's Password)|-|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
