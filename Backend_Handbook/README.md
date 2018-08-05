@@ -29,7 +29,7 @@ users表
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|username|VARCHAR(30)|用户名(username)|original|-|
+|username|VARCHAR(30)|用户名|original|-|
 |userdisplayname|VARCHAR(30)|用户展示名|original|-|
 |password|CHAR(32)|密码|md5(sha256(original, salt))|-|
 |email|VARCHAR(50)|邮箱|original|-|
@@ -57,7 +57,7 @@ tokens 表
 |-|-|-|-|-|
 |token|CHAR(32)|用户分配到的token|md5(sha256(relateduser + rand(0, 10000) + time(), salt))|-|
 |starttime|INT|token分配时间|time()|-|
-|relateduser|VARCHAR(30)|用户名(username)|original|-|
+|relateduser|VARCHAR(30)|用户名|original|-|
 |tokenip|VARCHAR(40)|用户登录时的ip|original|ipv4/ipv6|
 
 
@@ -67,7 +67,7 @@ apptokens 表
 |-|-|-|-|-|
 |token|CHAR(32)|appid分配到的token|md5(sha256(relatedapp + rand(0,10000) + time(), salt))|-|
 |starttime|INT|token分配时间|time()|-|
-|relateduser|VARCHAR(30)|用户名(username)|original|-|
+|relateduser|VARCHAR(30)|用户名|original|-|
 |relatedapp|VARCHAR(30)|appid|original|-|
 |tokenip|VARCHAR(40)|用户登录时的ip|original|ipv4/ipv6|
 
@@ -79,7 +79,7 @@ verificationcodes 表
 |actiontype|INT|此验证码用来做什么?|original|-|
 |vericode|CHAR(32)|验证码|md5(username+time()+salt)|-|
 |issuetime|INT|此验证码被发出的日期|time()|-|
-|username|VARCHAR(30)|用户名(username)|original|-|
+|username|VARCHAR(30)|用户名|original|-|
 
 *对于verificationcodes表, 每一行数据都会在他们过期后或被使用后被删除.*  
 
@@ -97,9 +97,9 @@ userauth表
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|username|VARCHAR(30)|用户名(username)|original|-|
+|username|VARCHAR(30)|用户名|original|-|
 |authcontent|TEXT|用户授权详情|gzcompress(original json)|-|
-
+|appid|VARCHAR(30)|被授权的APP|original|-|
 
 apps表  
 
@@ -207,7 +207,7 @@ userauth table
 |-|-|-|-|-|
 |username|VARCHAR(30)|user name|original|-|
 |authcontent|TEXT|user auth content|gzcompress(original json)|-|
-
+|appid|VARCHAR(30)|APP getting authed|-|
 
 apps table  
 
@@ -228,7 +228,7 @@ apps table
 ```json
 {
     "subscribeToMail":"true/false",
-    "perferredLanguage":"zh-CN/en",
+    "area":"zh-CN",
 }
 ```
 
@@ -249,10 +249,8 @@ apps table
 
 ```json
 {
-    "APPID":{
-        "accessInfo": "true/false",
-        "sendEmailToMe": "true/false"
-    }
+    "accessInfo": "true/false",
+    "sendEmailToMe": "true/false"
 }
 ```
 
