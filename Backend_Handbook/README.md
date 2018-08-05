@@ -108,10 +108,10 @@ apps表
 |appid|VARCHAR(30)|应用使用的appid|original|-|
 |appdisplayname|VARCHAR(30)|应用展示名|original|-|
 |apppass|CHAR(32)|appid对应的密码|md5(sha256(original, salt))|-|
-|apppermission|TEXT|应用可以调用的权限|original json|-|
+|apppermission|TEXT|应用可以调用的权限|gzcompress(original json)|-|
 |adminuser|VARCHAR(30)|注册appid的用户|original|-|
-|manageusers|TEXT|可以管理此appid的用户|original json|\["username1","username2"\]|
-|pendingusers|TEXT|等待接受管理此appid权限的用户|original json|\["username1","username2"\]|
+|manageusers|TEXT|可以管理此appid的用户|gzcompress(original json)|\["username1","username2"\]|
+|pendingusers|TEXT|等待接受管理此appid权限的用户|gzcompress(original json)|\["username1","username2"\]|
 |appjumpbackpage|TINYTEXT|登录blueairlive账户后跳转回的位置|https://www.example.com/openapilogincallback.php|
 |userdeletedcallback|TINYTEXT|用户BlueAirLive账户删除/取消授权后的回调|https://www.example.com/openapidelcallback.php|
 
@@ -216,10 +216,10 @@ apps table
 |appid|VARCHAR(30)|appid used by app|original|-|
 |appdisplayname|VARCHAR(30)|app display name|original|-|
 |apppass|CHAR(32)|appid's password|md5(sha256(original, salt))|-|
-|apppermission|TEXT|permissions app can use|original json|-|
+|apppermission|TEXT|permissions app can use|gzcompress(original json)|-|
 |adminuser|VARCHAR(30)|users that register for this appid|original|-|
-|manageusers|TEXT|users that can manage this appid|original json|\["username1","username2"\]|
-|pendingusers|TEXT|users that have been invited to manage this appid but is still pending to accept|original json|\["username1","username2"\]|
+|manageusers|TEXT|users that can manage this appid|gzcompress(original json)|\["username1","username2"\]|
+|pendingusers|TEXT|users that have been invited to manage this appid but is still pending to accept|gzcompress(original json)|\["username1","username2"\]|
 |appjumpbackpage|TINYTEXT|the url called back after user successfully logs into blueairlive|https://www.example.com/openapilogincallback.php|
 |userdeletedcallback|TINYTEXT|The url called back after user deleted his BAL account or he canceled auth for this app|https://www.example.com/openapidelcallback.php|
 
@@ -1268,6 +1268,7 @@ URL: /API/V040/PDKAPI/deleteAPPID.php
 ```
 
 **列出APPID \| List APPID**  
+*此接口可以被用户自己调用, 只要他查的是自己的用户名*  
 URL: /API/V040/PDKAPI/listAPPID.php  
 方法(Method): POST  
 参数(Parameters):  
