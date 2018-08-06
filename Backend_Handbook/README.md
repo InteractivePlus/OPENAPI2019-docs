@@ -77,7 +77,7 @@ verificationcodes 表
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
 |actiontype|INT|此验证码用来做什么?|original|-|
-|vericode|CHAR(32)|验证码|md5(username+time()+salt)|-|
+|vericode|CHAR(32)|验证码|md5(username+rand(0,10000)+time()+salt)|-|
 |issuetime|INT|此验证码被发出的日期|time()|-|
 |username|VARCHAR(30)|用户名|original|-|
 
@@ -185,7 +185,7 @@ verificationcodes table
 |field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
 |actiontype|INT|what is this verification code used for?|original|-|
-|vericode|CHAR(32)|the code itself|md5(username+time()+salt)|-|
+|vericode|CHAR(32)|the code itself|md5(username+rand(0,10000)+time()+salt)|-|
 |issuetime|INT|time the code has been issued|time()|-|
 |username|VARCHAR(30)|user owning this code|original|-|
 
