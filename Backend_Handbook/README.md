@@ -329,6 +329,7 @@ URL: /API/V040/userAPI/register.php
 |password|string|密码(Password)|-|
 |email|string|邮箱(Email)|-|
 |settings|string|设置(Settings)|JSON格式,可以只包含部分键值或设为空(In the format of JSON, can only include partial keys or set to empty)|
+|displayName|string|展示名,昵称(Nickname)|-|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
 
 返回值 \| Return Values:  
@@ -853,6 +854,39 @@ URL: /API/V040/groupAPI/createGroup.php
     }
 }
 ```
+**修改组展示名 \| Change Group Display Name**  
+URL: /API/V040/groupAPI/changeGroupName.php  
+方法(Method): POST  
+参数(Parameters):  
+
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|userName|string|用户名(Username)|-|
+|token|string|用户Token(Token got by the user after logging in)|-|
+|groupName|string|新组ID(new Group ID)|-|
+|newGroupDisplayName|string|新的展示名(new Display Name)|-|
+|language|string|语言(Language)|"zh-CN"/"en"/"zh"|
+
+返回值 \| Return Values:  
+
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|succeed|bool|是否成功(Is Operation Successful?)|-|
+|errorInfo\errCode|int|错误代码(Error Code)|-|
+|errorInfo\errDescription|string|错误详情(Error Description)|-|
+
+返回值例子 \| Return Value Examples:  
+
+```json
+{
+    "succeed": true,
+    "errorInfo": {
+        "errCode": 0,
+        "errDescription": "No error"
+    }
+}
+```
+
 
 **编辑组权限 \| Edit Group Permission**  
 URL: /API/V040/groupAPI/changeGroupPermission.php  
@@ -930,6 +964,7 @@ URL: /API/V040/PDKAPI/createAPPID.php
 |token|string|用户Token(Token got by the user after logging in)|-|
 |appID|string|APPID|-|
 |appPass|string|APPID密钥(APPID's Password)|-|
+|appDisplayName|string|APP展示名(APP's display name)|-|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
 
 返回值 \| Return Values:  
@@ -1481,9 +1516,10 @@ URL: /API/V040/PDK/sendMail.php
 |3|用户已存在|Existence user|
 |4|数据不存在|Non-existence data|
 |5|邮箱已存在|Existence email|
-|6|格式不正确|Format Error|
-|7|权限错误|Permission Error|
-|8|操作过于频繁|Too frequent operation|
+|6|展示名已存在|Existence displayname|
+|7|格式不正确|Format Error|
+|8|权限错误|Permission Error|
+|9|操作过于频繁|Too frequent operation|
 |500|内部错误|Internal Error|
 
 ## PHP命名规则 \| PHP Naming Rules
