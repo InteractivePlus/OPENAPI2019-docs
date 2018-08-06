@@ -479,6 +479,52 @@ URL: /API/V040/userAPI/changeDisplayName.php
     }
 }
 ```
+
+**列出授权 \| List Authorized APPS**  
+URL: /API/V040/userAPI/listAuthed.php  
+方法(Method): POST  
+参数(Parameters):  
+
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|userName|string|用户名(Username)|-|
+|token|string|用户登陆后获取的Token(Token after logging in)|-|
+|authingUsername|string|给予授权的用户名(Username that is given out auth)|-|
+|language|string|语言(Language)|"zh-CN"/"en"/"zh"|
+
+返回值 \| Return Values:  
+
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|succeed|bool|是否成功(Is Operation Successful?)|-|
+|errorInfo\errCode|int|错误代码(Error Code)|-|
+|errorInfo\errDescription|string|错误详情(Error Description)|-|
+|authContent|array|授权详情(Authorized APP List)|-|
+
+返回值例子 \| Return Value Examples:  
+
+```json
+{
+    "succeed": true,
+    "errorInfo": {
+        "errCode": 0,
+        "errDescription": "No error"
+    },
+    "authContent": [
+        {
+            "appid": "XXX",
+            "accessInfo": "true",
+            "sendEmailToMe": "false"
+        },
+        {
+            "appid": "XXY",
+            "accessInfo": "true",
+            "sendEmailToMe": "true"
+        }
+    ]
+}
+```
+
 **授权应用 \| Authorize APPS**  
 URL: /API/V040/userAPI/authAPPs.php  
 方法(Method): POST  
@@ -512,6 +558,8 @@ URL: /API/V040/userAPI/authAPPs.php
     }
 }
 ```
+
+
 
 **更改邮箱 \| Change Email**  
 URL: /API/V040/userAPI/changeMail.php  
@@ -645,7 +693,7 @@ URL: /API/V040/userAPI/sendVerificationCode.php
 }
 ```
 
-**列出用户信息 \| View User Info**  
+**查看用户信息 \| View User Info**  
 URL: /API/V040/userAPI/viewUserInfo.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -855,6 +903,7 @@ URL: /API/V040/groupAPI/createGroup.php
     }
 }
 ```
+
 **修改组展示名 \| Change Group Display Name**  
 URL: /API/V040/groupAPI/changeGroupName.php  
 方法(Method): POST  
@@ -885,6 +934,43 @@ URL: /API/V040/groupAPI/changeGroupName.php
         "errCode": 0,
         "errDescription": "No error"
     }
+}
+```
+
+**列出所有组 \| List All Groups**  
+URL: /API/V040/groupAPI/listGroups.php  
+方法(Method): POST  
+参数(Parameters):  
+
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|userName|string|用户名(Username)|-|
+|token|string|用户Token(Token got by the user after logging in)|-|
+|searchGroupName|string|搜索组ID(search Group ID)|为空则列出所有(If empty then list all)|
+|language|string|语言(Language)|"zh-CN"/"en"/"zh"|
+
+返回值 \| Return Values:  
+
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|succeed|bool|是否成功(Is Operation Successful?)|-|
+|errorInfo\errCode|int|错误代码(Error Code)|-|
+|errorInfo\errDescription|string|错误详情(Error Description)|-|
+|groups|array|组(groups)|-|
+
+返回值例子 \| Return Value Examples:  
+
+```json
+{
+    "succeed": true,
+    "errorInfo": {
+        "errCode": 0,
+        "errDescription": "No error"
+    },
+    "groups": [
+        "group1",
+        "normalUsers"
+    ]
 }
 ```
 
