@@ -1479,9 +1479,11 @@ URL: /API/V040/PDK/sendMail.php
 |1|凭据错误|Credential is not valid|
 |2|用户不存在|Non-existence user|
 |3|用户已存在|Existence user|
-|4|格式不正确|Format Error|
-|5|权限错误|Permission Error|
-|6|操作过于频繁|Too frequent operation|
+|4|数据不存在|Non-existence data|
+|5|邮箱已存在|Existence email|
+|6|格式不正确|Format Error|
+|7|权限错误|Permission Error|
+|8|操作过于频繁|Too frequent operation|
 |500|内部错误|Internal Error|
 
 ## PHP命名规则 \| PHP Naming Rules
