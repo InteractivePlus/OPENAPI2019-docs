@@ -40,7 +40,7 @@ users表
 |userpermission|TEXT|用户权限|gzcompress(original json)|-|
 |usergroup|VARCHAR(30)|用户组|original|-|
 |regtime|INT|用户注册时间|time()|-|
-
+|relatedapps|TEXT|用户相关的APPID|gzcompress(Original JSON)|["appid1","appid2"]|
 
 usergroups表  
 
@@ -148,6 +148,7 @@ users table
 |userpermission|TEXT|user permissions|gzcompress(original json)|-|
 |usergroup|VARCHAR(30)|user group|original|-|
 |regtime|INT|user register time|time()|-|
+|relatedapps|TEXT|user related appids|gzcompress(Original JSON)|["appid1", "appid2"]|
 
 
 usergroups table  
