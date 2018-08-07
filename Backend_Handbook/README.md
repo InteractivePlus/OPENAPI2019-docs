@@ -731,7 +731,10 @@ URL: /API/V040/userAPI/viewUserInfo.php
         "settings": "XXX",
         "thridAuth": "XXX",
         "userGroup": "XXX",
-        "relatedApps": "XXX"
+        "relatedApps": [
+            "APPID1",
+            "APPID2"
+        ]
     }
 }
 ```
