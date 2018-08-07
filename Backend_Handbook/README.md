@@ -866,8 +866,18 @@ URL: /API/V040/userAPI/listUsers.php
         "errDescription": "No error"
     },
     "users":[
-        "admin",
-        "toiletcommander"
+        {
+            "username": "admin",
+            "displayName": "XXX",
+            "email": "XXXX@XXX.com",
+            "userGroup": "XXXXX"
+        },
+        {
+            "username": "toiletcommander",
+            "displayName": "XXX",
+            "email": "XXXX@XXX.com",
+            "userGroup": "XXXX"
+        }
     ]
 }
 ```
@@ -969,8 +979,14 @@ URL: /API/V040/groupAPI/listGroups.php
         "errDescription": "No error"
     },
     "groups": [
-        "group1",
-        "normalUsers"
+        {
+            "groupName": "group1",
+            "groupDisplayName": "XXX"
+        },
+        {
+            "groupName": "normalUsers",
+            "groupDisplayName": "XXX"
+        }
     ]
 }
 ```
@@ -1421,10 +1437,18 @@ URL: /API/V040/PDKAPI/listAPPID.php
         "errDescription": "No error"
     },
     "appIDs":[
-        "XXXX",
-        "XXXX",
-        "XXXX",
-        "XXXX"
+        {
+            "appID": "XXXX",
+            "appDisplayName": "XXX",
+            "loginCallBackURL": "XXX",
+            "deleteCallBackURL": "XXX"
+        },
+        {
+            "appID:": "XXXX",
+            "appDisplayName": "XXX",
+            "loginCallBackURL": "XXX",
+            "deleteCallBackURL": "XXX"
+        }
     ]
 }
 ```
