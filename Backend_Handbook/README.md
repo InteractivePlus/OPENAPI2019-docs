@@ -1364,8 +1364,41 @@ URL: /API/V040/PDKAPI/changeAPPDisplayName.php
 }
 ```
 
-**更改APPID回调地址 \| Change APPID's Callback URL**  
+**更改APPID登录回调地址 \| Change APPID's Login Callback URL**  
 URL: /API/V040/PDKAPI/changeAPPLoginCallBack.php  
+方法(Method): POST  
+参数(Parameters):  
+
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|userName|string|用户名(Username)|-|
+|token|string|用户Token(Token got by the user after logging in)|-|
+|appID|string|APPID|-|
+|newCallBack|string|新回调地址(New Callback URL)|-|
+|language|string|语言(Language)|"zh-CN"/"en"/"zh"|
+
+返回值 \| Return Values:  
+
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|succeed|bool|是否成功(Is Operation Successful?)|-|
+|errorInfo\errCode|int|错误代码(Error Code)|-|
+|errorInfo\errDescription|string|错误详情(Error Description)|-|
+
+返回值例子 \| Return Value Examples:  
+
+```json
+{
+    "succeed": true,
+    "errorInfo": {
+        "errCode": 0,
+        "errDescription": "No error"
+    }
+}
+```
+
+**更改APPID用户删除回调地址 \| Change APPID's User Deletion Callback URL**  
+URL: /API/V040/PDKAPI/changeAPPDelCallBack.php  
 方法(Method): POST  
 参数(Parameters):  
 
