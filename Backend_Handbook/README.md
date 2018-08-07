@@ -1534,6 +1534,7 @@ URL: /API/V040/PDK/login.php
 |userName|string|用户名(Username)|-|
 |token|string|用户token(token of the user)|-|
 |appID|string|APPID|-|
+|appIP|string|APP服务器IP(Third Party Server IP)|empty means all ip can access.|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
 
 返回值 \| Return Values:  
