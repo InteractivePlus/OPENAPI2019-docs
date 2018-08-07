@@ -424,6 +424,7 @@ URL: /API/V040/userAPI/changeSetting.php
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户登陆后获取的Token|-|
+|changingUserName|string|被更改的用户名(User getting his/her settings changed)|-|
 |newSettings|string|新设置JSON, 可以只包含部分键值|-|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
 
