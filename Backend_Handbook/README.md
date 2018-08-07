@@ -1617,6 +1617,45 @@ URL: /API/V040/PDK/checkToken.php
 }
 ```
 
+**第三方权限查看 \| 3rd Party Permission View**  
+*查看可以访问的指定用户的权限 \| View permissions that are enabled on a specific user*  
+URL: /API/V040/PDK/checkPermission.php  
+方法(Method): POST  
+参数(Parameters):  
+
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|userName|string|用户名(Username)|-|
+|appToken|string|分配的Token(Token distributed to 3rd party)|-|
+|appID|string|APPID|-|
+|appPass|string|APPID对应的密码(APPID's Password)|-|
+|language|string|语言(Language)|"zh-CN"/"en"/"zh"|
+
+返回值 \| Return Values:  
+
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|succeed|bool|Token是否合法(Is token legal?)|-|
+|errorInfo\errCode|int|错误代码(Error Code)|-|
+|errorInfo\errDescription|string|错误详情(Error Description)|-|
+|permissionInfo|object|权限详情(Permission Object)|-|
+
+返回值例子 \| Return Value Examples:  
+
+```json
+{
+    "succeed": true,
+    "errorInfo": {
+        "errCode": 0,
+        "errDescription": "No error"
+    },
+    "permissionInfo": {
+        "accessInfo": "true/false",
+        "sendEmail": "true/false"
+    }
+}
+```
+
 **第三方用户信息调取(用于第三方调用) \| Third party user info read(For 3rd party to call)**  
 URL: /API/V040/PDK/getUserInfo.php  
 方法(Method): POST  
