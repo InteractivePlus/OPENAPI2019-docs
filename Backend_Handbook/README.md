@@ -13,12 +13,12 @@ OPENAPI 4.0 utilizes brand new version of BoostPHP2.0 as its core framework. Its
 在这些数据表定义中,   
 => `USERNAME_MAX`代表用户名最长宽度, 对应settings.php中的`$OPENAPISettings['User']['UsernameLength']['max']`  
 => `PASSWORD_MAX`代表密码最长宽度, 对应settings.php中的`$OPENAPISettings['User']['PasswordLength']['max']`  
-=> `DISPLAYNAME_MAX`代表展示名最长宽度, 对应settings.php中的`$OPENAPISettings['User']['DisplayNameLength']['min']`  
+=> `DISPLAYNAME_MAX`代表展示名最长宽度, 对应settings.php中的`$OPENAPISettings['User']['DisplayNameLength']['max']`  
 
 In those data table definitions,   
 => `USERNAME_MAX` represents the maximum length for username string, and is corresponding to `$OPENAPISettings['User']['UsernameLength']['max']` in settings.php  
 => `Password_MAX` represents the maximum length for password string, and is corresponding to `$OPENAPISettings['User']['PasswordLength']['max']` in settings.php  
-=> `DisplayName_MAX` represents the maximum length for displayname string, and is corresponding to `$OPENAPISettings['User']['DisplayNameLength']['min']` in settings.php  
+=> `DisplayName_MAX` represents the maximum length for displayname string, and is corresponding to `$OPENAPISettings['User']['DisplayNameLength']['max']` in settings.php  
 
 
 1. 数据库表定义  
