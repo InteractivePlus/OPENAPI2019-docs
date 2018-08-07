@@ -10,6 +10,17 @@ OPENAPI 4.0 utilizes brand new version of BoostPHP2.0 as its core framework. Its
 **数据表和数据字段名使用小写(参照MySQL手册)**  
 **table names and field names should be in lowercase, according to MYSQL Manual**  
 
+在这些数据表定义中,   
+=> `USERNAME_MAX`代表用户名最长宽度, 对应settings.php中的`$OPENAPISettings['User']['UsernameLength']['max']`  
+=> `PASSWORD_MAX`代表密码最长宽度, 对应settings.php中的`$OPENAPISettings['User']['PasswordLength']['max']`  
+=> `DISPLAYNAME_MAX`代表展示名最长宽度, 对应settings.php中的`$OPENAPISettings['User']['DisplayNameLength']['min']`  
+
+In those data table definitions,   
+=> `USERNAME_MAX` represents the maximum length for username string, and is corresponding to `$OPENAPISettings['User']['UsernameLength']['max']` in settings.php  
+=> `Password_MAX` represents the maximum length for password string, and is corresponding to `$OPENAPISettings['User']['PasswordLength']['max']` in settings.php  
+=> `DisplayName_MAX` represents the maximum length for displayname string, and is corresponding to `$OPENAPISettings['User']['DisplayNameLength']['min']` in settings.php  
+
+
 1. 数据库表定义  
 
 |表名|表介绍|
@@ -29,8 +40,8 @@ users表
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|username|VARCHAR(30)|用户名|original|-|
-|userdisplayname|VARCHAR(30)|用户展示名|original|-|
+|username|VARCHAR(`USERNAME_MAX`)|用户名|original|-|
+|userdisplayname|VARCHAR(`DISPLAYNAME_MAX`)|用户展示名|original|-|
 |password|CHAR(32)|密码|md5(sha256(original, salt))|-|
 |email|VARCHAR(50)|邮箱|original|-|
 |settings|TEXT|用户设置|gzcompress(original json)|-|
@@ -38,7 +49,7 @@ users表
 |emailverified|TINYINT(1)|邮箱是否验证过|original|值为1(true)或0(false)|
 |emailverifycode|CHAR(32)|邮箱验证码|md5(sha256(username + time(), salt))|用户验证完毕后删除|
 |userpermission|TEXT|用户权限|gzcompress(original json)|-|
-|usergroup|VARCHAR(30)|用户组|original|-|
+|usergroup|VARCHAR(`USERNAME_MAX`)|用户组|original|-|
 |regtime|INT|用户注册时间|time()|-|
 |relatedapps|TEXT|用户相关的APPID|gzcompress(Original JSON)|["appid1","appid2"]|
 
@@ -46,8 +57,8 @@ usergroups表
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|groupname|VARCHAR(30)|组名|original|-|
-|groupdisplayname|VARCHAR(30)|组展示名|original|-|
+|groupname|VARCHAR(`USERNAME_MAX`)|组名|original|-|
+|groupdisplayname|VARCHAR(`DISPLAYNAME_MAX`)|组展示名|original|-|
 |grouppermission|TEXT|组权限|gzcompress(original json)|-|
 
 
@@ -57,7 +68,7 @@ tokens 表
 |-|-|-|-|-|
 |token|CHAR(32)|用户分配到的token|md5(sha256(relateduser + rand(0, 10000) + time(), salt))|-|
 |starttime|INT|token分配时间|time()|-|
-|relateduser|VARCHAR(30)|用户名|original|-|
+|relateduser|VARCHAR(`USERNAME_MAX`)|用户名|original|-|
 |tokenip|VARCHAR(40)|用户登录时的ip|original|ipv4/ipv6|
 
 
@@ -67,8 +78,8 @@ apptokens 表
 |-|-|-|-|-|
 |token|CHAR(32)|appid分配到的token|md5(sha256(relatedapp + rand(0,10000) + time(), salt))|-|
 |starttime|INT|token分配时间|time()|-|
-|relateduser|VARCHAR(30)|用户名|original|-|
-|relatedapp|VARCHAR(30)|appid|original|-|
+|relateduser|VARCHAR(`USERNAME_MAX`)|用户名|original|-|
+|relatedapp|VARCHAR(`USERNAME_MAX`)|appid|original|-|
 |tokenip|VARCHAR(40)|用户登录时的ip|original|ipv4/ipv6|
 
 
@@ -79,7 +90,7 @@ verificationcodes 表
 |actiontype|INT|此验证码用来做什么?|original|-|
 |vericode|CHAR(32)|验证码|md5(username+rand(0,10000)+time()+salt)|-|
 |issuetime|INT|此验证码被发出的日期|time()|-|
-|username|VARCHAR(30)|用户名|original|-|
+|username|VARCHAR(`USERNAME_MAX`)|用户名|original|-|
 
 *对于verificationcodes表, 每一行数据都会在他们过期后或被使用后被删除.*  
 
@@ -97,19 +108,19 @@ userauth表
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|username|VARCHAR(30)|用户名|original|-|
+|username|VARCHAR(`USERNAME_MAX`)|用户名|original|-|
 |authcontent|TEXT|用户授权详情|gzcompress(original json)|-|
-|appid|VARCHAR(30)|被授权的APP|original|-|
+|appid|VARCHAR(`USERNAME_MAX`)|被授权的APP|original|-|
 
 apps表  
 
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
-|appid|VARCHAR(30)|应用使用的appid|original|-|
-|appdisplayname|VARCHAR(30)|应用展示名|original|-|
+|appid|VARCHAR(`USERNAME_MAX`)|应用使用的appid|original|-|
+|appdisplayname|VARCHAR(`DISPLAYNAME_MAX`)|应用展示名|original|-|
 |apppass|CHAR(32)|appid对应的密码|md5(sha256(original, salt))|-|
 |apppermission|TEXT|应用可以调用的权限|gzcompress(original json)|-|
-|adminuser|VARCHAR(30)|注册appid的用户|original|-|
+|adminuser|VARCHAR(`USERNAME_MAX`)|注册appid的用户|original|-|
 |manageusers|TEXT|可以管理此appid的用户|gzcompress(original json)|\["username1","username2"\]|
 |pendingusers|TEXT|等待接受管理此appid权限的用户|gzcompress(original json)|\["username1","username2"\]|
 |appjumpbackpage|TINYTEXT|登录blueairlive账户后跳转回的位置|https://www.example.com/openapilogincallback.php|
@@ -137,8 +148,8 @@ users table
 
 |field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|username|VARCHAR(30)|username|original|-|
-|userdisplayname|VARCHAR(30)|user display name|original|-|
+|username|VARCHAR(`USERNAME_MAX`)|username|original|-|
+|userdisplayname|VARCHAR(`DISPLAYNAME_MAX`)|user display name|original|-|
 |password|CHAR(32)|password|md5(sha256(original, salt))|-|
 |email|VARCHAR(50)|user email|original|-|
 |settings|TEXT|user settings|gzcompress(original json)|-|
@@ -146,7 +157,7 @@ users table
 |emailverified|TINYINT(1)|has user's mail been varified?|original|value is either 1(true) or 0(false)|
 |emailverifycode|CHAR(32)|verification code for verifying email|md5(sha256(username + time(), salt))|deleted after verified the email|
 |userpermission|TEXT|user permissions|gzcompress(original json)|-|
-|usergroup|VARCHAR(30)|user group|original|-|
+|usergroup|VARCHAR(`USERNAME_MAX`)|user group|original|-|
 |regtime|INT|user register time|time()|-|
 |relatedapps|TEXT|user related appids|gzcompress(Original JSON)|["appid1", "appid2"]|
 
@@ -155,8 +166,8 @@ usergroups table
 
 |field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|groupname|VARCHAR(30)|groupid|original|-|
-|groupdisplayname|VARCHAR(30)|group display name|original|-|
+|groupname|VARCHAR(`USERNAME_MAX`)|groupid|original|-|
+|groupdisplayname|VARCHAR(`DISPLAYNAME_MAX`)|group display name|original|-|
 |grouppermission|TEXT|group permissions|gzcompress(original json)|-|
 
 
@@ -166,7 +177,7 @@ tokens table
 |-|-|-|-|-|
 |token|CHAR(32)|the token user gets|md5(sha256(relateduser + rand(0,10000) + time(), salt))|-|
 |starttime|INT|the time token was given out|time()|-|
-|relateduser|VARCHAR(30)|the user that has this token|original|-|
+|relateduser|VARCHAR(`USERNAME_MAX`)|the user that has this token|original|-|
 |tokenip|VARCHAR(40)|the ip of the user when logged in|original|ipv4/ipv6|
 
 
@@ -176,8 +187,8 @@ apptokens table
 |-|-|-|-|-|
 |token|CHAR(32)|the token given to appid|md5(sha256(relatedapp + rand(0,10000) + time(), salt))|-|
 |starttime|INT|token distribution time|time()|-|
-|relateduser|VARCHAR(30)|the user that is related to this token|original|-|
-|relatedapp|VARCHAR(30)|the appid that owns this token|original|-|
+|relateduser|VARCHAR(`USERNAME_MAX`)|the user that is related to this token|original|-|
+|relatedapp|VARCHAR(`USERNAME_MAX`)|the appid that owns this token|original|-|
 |tokenip|VARCHAR(40)|the ip of the user when logged in|original|ipv4/ipv6|
 
 
@@ -188,7 +199,7 @@ verificationcodes table
 |actiontype|INT|what is this verification code used for?|original|-|
 |vericode|CHAR(32)|the code itself|md5(username+rand(0,10000)+time()+salt)|-|
 |issuetime|INT|time the code has been issued|time()|-|
-|username|VARCHAR(30)|user owning this code|original|-|
+|username|VARCHAR(`USERNAME_MAX`)|user owning this code|original|-|
 
 *for the verificationcodes table, every row get deleted immediately after they expire or they are used for verification*  
 
@@ -206,19 +217,19 @@ userauth table
 
 |field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|username|VARCHAR(30)|user name|original|-|
+|username|VARCHAR(`USERNAME_MAX`)|user name|original|-|
 |authcontent|TEXT|user auth content|gzcompress(original json)|-|
-|appid|VARCHAR(30)|APP getting authed|-|
+|appid|VARCHAR(`USERNAME_MAX`)|APP getting authed|-|
 
 apps table  
 
 |field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
-|appid|VARCHAR(30)|appid used by app|original|-|
-|appdisplayname|VARCHAR(30)|app display name|original|-|
+|appid|VARCHAR(`USERNAME_MAX`)|appid used by app|original|-|
+|appdisplayname|VARCHAR(`DISPLAYNAME_MAX`)|app display name|original|-|
 |apppass|CHAR(32)|appid's password|md5(sha256(original, salt))|-|
 |apppermission|TEXT|permissions app can use|gzcompress(original json)|-|
-|adminuser|VARCHAR(30)|users that register for this appid|original|-|
+|adminuser|VARCHAR(`USERNAME_MAX`)|users that register for this appid|original|-|
 |manageusers|TEXT|users that can manage this appid|gzcompress(original json)|\["username1","username2"\]|
 |pendingusers|TEXT|users that have been invited to manage this appid but is still pending to accept|gzcompress(original json)|\["username1","username2"\]|
 |appjumpbackpage|TINYTEXT|the url called back after user successfully logs into blueairlive|https://www.example.com/openapilogincallback.php|
