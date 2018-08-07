@@ -263,6 +263,7 @@ apps table
     "ViewLogs": "true/false",
     "ManageUserGroups": "true/false",
     "ChangeUserPermissions": "true/false",
+    "ModifyAPPIDs": "true/false"
 }
 ```
 
@@ -1067,6 +1068,7 @@ URL: /API/V040/PDKAPI/createAPPID.php
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
+|creatingUserName|string|创建APPID的用户名(The username that has this appid under him/her)|-|
 |appID|string|APPID|-|
 |appPass|string|APPID密钥(APPID's Password)|-|
 |appDisplayName|string|APP展示名(APP's display name)|-|
