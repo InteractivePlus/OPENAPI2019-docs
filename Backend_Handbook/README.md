@@ -1607,6 +1607,7 @@ URL: /API/V040/PDK/sendMail.php
 |7|格式不正确|Format Error|
 |8|权限错误|Permission Error|
 |9|操作过于频繁|Too frequent operation|
+|10|邮箱未验证|Email not verified|
 |500|内部错误|Internal Error|
 
 ## PHP命名规则 \| PHP Naming Rules
