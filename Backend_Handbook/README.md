@@ -916,7 +916,7 @@ URL: /API/V040/groupAPI/createGroup.php
 ```
 
 **修改组展示名 \| Change Group Display Name**  
-URL: /API/V040/groupAPI/changeGroupName.php  
+URL: /API/V040/groupAPI/changeGroupDisplayName.php  
 方法(Method): POST  
 参数(Parameters):  
 
