@@ -1035,6 +1035,7 @@ URL: /API/V040/groupAPI/deleteGroup.php
 |userName|string|用户名(Username)|-|
 |token|string|用户Token(Token got by the user after logging in)|-|
 |groupName|string|组ID(Group ID)|-|
+|newGroupName|string|用户迁移到的组名(New group that users under this group is moved to)|如果为空, 则迁移到normalUsers(If empty, then it is normalUsers on default)|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
 
 返回值 \| Return Values:  
