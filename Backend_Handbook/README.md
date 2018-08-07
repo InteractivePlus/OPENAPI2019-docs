@@ -1176,6 +1176,25 @@ URL: /API/V040/PDKAPI/viewAPPIDInfo.php
 }
 ```
 
+正常用户返回值例子 \| Normal User's Return Value Examples:
+```json
+{
+    "succeed": true,
+    "errorInfo": {
+        "errCode": 0,
+        "errDescription": "No error"
+    },
+    "appIDInfo":{
+        "appDisplayName": "XXX",
+        "appPermission": {
+            "accessInfo:": "true/false",
+            "sendEmailToUsers": "true/false"
+        }
+    }
+}
+```
+
+
 **转移APPID所有权 \| Change APPID Ownership**  
 URL: /API/V040/PDKAPI/changeAPPIDOwnership.php  
 方法(Method): POST  
