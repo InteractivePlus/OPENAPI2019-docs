@@ -297,6 +297,36 @@ apps table
 ```
 
 ## API定义 \| API Declaration
+**安装 \| Installation**  
+URL: /install/index.php  
+方法(Method): POST  
+参数(Parameters):  
+
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|MySQLHost|string|MySQL服务器地址(MySQL Server Hostname/IP)|-|
+|MySQLUsername|string|MySQL服务器用户名(MySQL Server Username)|-|
+|MySQLPassword|string|MySQL服务器密码(MySQL Server Password)|-|
+|MySQLDatabase|string|MySQL服务器数据库名(MySQL Server Database Name)|-|
+|SMTPPort|string|邮件发送SMTP端口(Email Service SMTP Port)|-|
+|SMTPHost|string|邮件发送SMTP服务器地址(Email Service SMTP Hostname/IP)|-|
+|SMTPUser|string|邮件发送SMTP用户(Email Service SMTP Username)|-|
+|SMTPPassword|string|邮件发送SMTP密码(Email Service SMTP Password)|-|
+|SMTPSenderAddress|string|邮件发送的发件人地址(Email Service Sender Address)|-|
+|SMTPSenderName|string|邮件发送人昵称(Email Service Sender Nickname)|-|
+|SMTPSecureConnection|string|邮件发送加密方法(Email Service Encryption Method)|leave empty/ssl/tls|
+|EncryptionSalt|string|哈希值计算时放入的盐(Salt placed in while calculating hash values)|-|
+
+
+返回类型 \| Return Type:JSON  
+返回值 \| Return Values:  
+
+|键值(Key)|键值类型(Key Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|succeed|bool|是否成功(is the operation successful?)|-|
+|errorInfo\\errDescription|string|错误详情(Error Description)|-|
+
+
 **登录 \| Login**  
 URL: /API/V040/userAPI/login.php  
 方法(Method): POST  
