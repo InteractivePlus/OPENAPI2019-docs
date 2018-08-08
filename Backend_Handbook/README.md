@@ -502,7 +502,7 @@ URL: /API/V040/userAPI/listAuthed.php
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户登陆后获取的Token(Token after logging in)|-|
-|authingUsername|string|给予授权的用户名(Username that is given out auth)|-|
+|authingUserName|string|给予授权的用户名(Username that is given out auth)|-|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
 
 返回值 \| Return Values:  
