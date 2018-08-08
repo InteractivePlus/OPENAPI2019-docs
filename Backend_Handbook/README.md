@@ -928,6 +928,84 @@ URL: /API/V040/userAPI/listUsers.php
 }
 ```
 
+**列出所有日志 \| List All Logs**  
+URL: /API/V040/logAPI/listLogs.php  
+方法(Method): POST  
+参数(Parameters):  
+
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|userName|string|用户名(Username)|-|
+|token|string|用户Token(Token got by the user after logging in)|-|
+|minimumLevel|int|查看的最小日志等级(Lowest Log Level Viewing)|1-5, 小于minimumLevel的日志会被忽略(Value from 1-5, logs that has lower level than this number will be ignored)|
+
+返回值 \| Return Values:
+
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|succeed|bool|是否成功(Is Operation Successful?)|-|
+|errorInfo\errCode|int|错误代码(Error Code)|-|
+|errorInfo\errDescription|string|错误详情(Error Description)|-|
+|logs|object|日志详情(Log Description)|-|
+
+*logTime的时间是北京时间的UNIX TIMESTAMP(从1970年1月1日的秒数)*  
+
+返回值例子 \| Return Value Examples:
+
+```json
+{
+    "succeed": true,
+    "errorInfo": {
+        "errCode": 0,
+        "errDescription": "No error"
+    },
+    "logs": [
+        {
+            "logLevel": 2,
+            "logContent": "秋风牛逼",
+            "logTime": 1533768153
+        },
+        {
+            "logLevel": 3,
+            "logContent": "流星也牛逼",
+            "logTime": 1533768153
+        }
+    ]
+}
+```
+
+**删除日志 \| Delete Logs**  
+URL: /API/V040/logAPI/delLogs.php  
+方法(Method): POST  
+参数(Parameters):  
+
+|参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|userName|string|用户名(Username)|-|
+|token|string|用户Token(Token got by the user after logging in)|-|
+|logLevel|int|被删除的日志logLevel(The Log that is deleting's LogLevel)|如果为-1,则删除所有(If -1, then delete all)|
+|logTime|int|被删除的日志logTime(The Log that is deleting's LogTime)|如上(Same as adove)|
+
+返回值 \| Return Values:
+
+|键值(Key)|键值类型(Type)|简介(introduction)|注解(Note)|
+|-|-|-|-|
+|succeed|bool|是否成功(Is Operation Successful?)|-|
+|errorInfo\errCode|int|错误代码(Error Code)|-|
+|errorInfo\errDescription|string|错误详情(Error Description)|-|
+
+返回值例子 \| Return Value Examples:
+
+```json
+{
+    "succeed": true,
+    "errorInfo": {
+        "errCode": 0,
+        "errDescription": "No error"
+    },
+}
+```
+
 **创建组 \| Create Group**  
 URL: /API/V040/groupAPI/createGroup.php  
 方法(Method): POST  
