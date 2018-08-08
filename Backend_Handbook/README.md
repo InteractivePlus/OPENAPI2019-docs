@@ -100,7 +100,7 @@ log表
 |字段名|类型|解释|算法|注释|
 |-|-|-|-|-|
 |logtime|INT|日志记录时间|time()|-|
-|logcontent|TEXT|日志内容|original|-|
+|logcontent|TEXT|日志内容|gzcompress(original)|-|
 |loglevel|INT|日志等级|original|1(normal)-5(severe)|
 
 
@@ -209,7 +209,7 @@ log table
 |field|data type|explanations|algorithms|notes|
 |-|-|-|-|-|
 |logtime|INT|time when logged|time()|-|
-|logcontent|TEXT|log content|original|-|
+|logcontent|TEXT|log content|gzcompress(original)|-|
 |loglevel|INT|log level|original|1(normal)-5(severe)|
 
 
