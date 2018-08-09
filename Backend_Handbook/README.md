@@ -316,6 +316,8 @@ URL: /install/index.php
 |SMTPSenderName|string|邮件发送人昵称(Email Service Sender Nickname)|-|
 |SMTPSecureConnection|string|邮件发送加密方法(Email Service Encryption Method)|leave empty/ssl/tls|
 |EncryptionSalt|string|哈希值计算时放入的盐(Salt placed in while calculating hash values)|-|
+|AdminPassword|string|管理员密码(Administrator's Password)|-|
+|AdminEmail|string|管理员邮件地址(Administrator's Email)|-|
 
 
 返回类型 \| Return Type:JSON  
