@@ -305,6 +305,7 @@ URL: /install/index.php
 |参数名(Parameter)|参数类型(Type)|简介(introduction)|注解(Note)|
 |-|-|-|-|
 |MySQLHost|string|MySQL服务器地址(MySQL Server Hostname/IP)|-|
+|MySQLPort|string|MySQL服务器端口(MySQL Server Port)|正常情况为 Normal MySQL Port is 3306|
 |MySQLUsername|string|MySQL服务器用户名(MySQL Server Username)|-|
 |MySQLPassword|string|MySQL服务器密码(MySQL Server Password)|-|
 |MySQLDatabase|string|MySQL服务器数据库名(MySQL Server Database Name)|-|
