@@ -298,6 +298,7 @@ apps table
 
 ## API定义 \| API Declaration
 **安装 \| Installation**  
+[x] 已测试 / Tested  
 URL: /install/index.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -332,6 +333,7 @@ URL: /install/index.php
 
 
 **登录 \| Login**  
+[x] 已测试 / Tested  
 URL: /API/V040/userAPI/login.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -366,6 +368,7 @@ URL: /API/V040/userAPI/login.php
 ```
 
 **注册 \| Register**  
+[x] 已测试 / Tested
 URL: /API/V040/userAPI/register.php  
 方法(Method): POST  
 参数(Parameters):  
