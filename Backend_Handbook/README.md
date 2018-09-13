@@ -320,7 +320,7 @@ URL: /install/index.php
 |EncryptionSalt|string|哈希值计算时放入的盐(Salt placed in while calculating hash values)|-|
 |AdminPassword|string|管理员密码(Administrator's Password)|-|
 |AdminEmail|string|管理员邮件地址(Administrator's Email)|-|
-|FrontEndURL|string|前端URL地址|-|
+|FrontEndURL|string|前端URL地址|结尾无斜杠 / No slash at the end|
 
 
 返回类型 \| Return Type:JSON  
