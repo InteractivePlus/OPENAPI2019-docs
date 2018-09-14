@@ -435,6 +435,7 @@ URL: /API/V040/userAPI/resendRegVerification.php
 ```
 
 **验证Token \| Check Token**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/tokenVerification.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -466,6 +467,7 @@ URL: /API/V040/userAPI/tokenVerification.php
 ```
 
 **更改设置 \| Change Settings**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/changeSetting.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -499,6 +501,7 @@ URL: /API/V040/userAPI/changeSetting.php
 ```
 
 **更改昵称 \| Change Display Name**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/changeDisplayName.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -532,6 +535,7 @@ URL: /API/V040/userAPI/changeDisplayName.php
 ```
 
 **列出授权 \| List Authorized APPS**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/listAuthed.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -577,6 +581,7 @@ URL: /API/V040/userAPI/listAuthed.php
 ```
 
 **授权应用 \| Authorize APPS**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/authAPPs.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -585,7 +590,7 @@ URL: /API/V040/userAPI/authAPPs.php
 |-|-|-|-|
 |userName|string|用户名(Username)|-|
 |token|string|用户登陆后获取的Token(Token after logging in)|-|
-|authingUsername|string|给予授权的用户名(Username that is given out auth)|-|
+|authingUserName|string|给予授权的用户名(Username that is given out auth)|-|
 |authingAPPID|string|被授权的APPID(APP that is getting authed)|-|
 |permissions|string|权限(Permission JSONS)|为空则删除授权(If empty then delete auth for the APP)|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
