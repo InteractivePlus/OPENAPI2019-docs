@@ -618,6 +618,7 @@ URL: /API/V040/userAPI/authAPPs.php
 
 
 **更改邮箱 \| Change Email**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/changeMail.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -628,7 +629,7 @@ URL: /API/V040/userAPI/changeMail.php
 |token|string|用户登陆后获取的Token(Token got by the user after logging in)|-|
 |changingUserName|string|被更改邮箱的用户(User that get his mail changed)|-|
 |newMail|string|新邮箱(new Email Addr)|-|
-|veriCode|string|更改邮箱所需的, 发到老邮箱的验证码(Verification sent to the old email)|如果不是本人更改本人账号, 则是管理员, 无需veriCode(If it is not the user itself changing email, then veriCode is not needed)|
+|veriCode|string|更改邮箱所需的, 发到老邮箱的验证码(Verification sent to the old email)|如果不是本人更改本人账号, 则是管理员, 无需验证码(If it is not the user itself changing email, then veriCode is not needed)|
 |language|string|语言(Language)|"zh-CN"/"en"/"zh"|
 
 返回值 \| Return Values:  
@@ -652,6 +653,7 @@ URL: /API/V040/userAPI/changeMail.php
 ```
 
 **管理员重置密码 \| Admin Resetting Password of one user**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/adminResetPassword.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -686,6 +688,7 @@ URL: /API/V040/userAPI/adminResetPassword.php
 
 
 **更改密码 \| Password Change**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/changePassword.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -718,6 +721,7 @@ URL: /API/V040/userAPI/changePassword.php
 ```
 
 **发送验证码 \| Send Verification Code**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/sendVerificationCode.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -750,6 +754,7 @@ URL: /API/V040/userAPI/sendVerificationCode.php
 ```
 
 **查看用户信息 \| View User Info**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/viewUserInfo.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -796,6 +801,7 @@ URL: /API/V040/userAPI/viewUserInfo.php
 *第三方应用看不见您的信息*  
 
 **删除用户 \| Delete User**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/deleteUser.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -829,6 +835,7 @@ URL: /API/V040/userAPI/deleteUser.php
 ```
 
 **修改用户权限 \| Change User Permission**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/changeUserPermission.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -862,6 +869,7 @@ URL: /API/V040/userAPI/changeUserPermission.php
 ```
 
 **修改用户组 \| Change User Group**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/changeUserGroup.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -895,6 +903,7 @@ URL: /API/V040/userAPI/changeUserGroup.php
 ```
 
 **列出所有用户 \| List All Users**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/userAPI/listUsers.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -942,6 +951,7 @@ URL: /API/V040/userAPI/listUsers.php
 ```
 
 **列出所有日志 \| List All Logs**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/logAPI/listLogs.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -988,6 +998,7 @@ URL: /API/V040/logAPI/listLogs.php
 ```
 
 **删除日志 \| Delete Logs**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/logAPI/delLogs.php  
 方法(Method): POST  
 参数(Parameters):  
