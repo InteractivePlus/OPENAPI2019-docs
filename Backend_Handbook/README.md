@@ -1031,6 +1031,7 @@ URL: /API/V040/logAPI/delLogs.php
 ```
 
 **创建组 \| Create Group**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/groupAPI/createGroup.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1064,6 +1065,7 @@ URL: /API/V040/groupAPI/createGroup.php
 ```
 
 **修改组展示名 \| Change Group Display Name**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/groupAPI/changeGroupDisplayName.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1097,6 +1099,7 @@ URL: /API/V040/groupAPI/changeGroupDisplayName.php
 ```
 
 **列出所有组 \| List All Groups**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/groupAPI/listGroups.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1141,6 +1144,7 @@ URL: /API/V040/groupAPI/listGroups.php
 
 
 **编辑组权限 \| Edit Group Permission**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/groupAPI/changeGroupPermission.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1174,6 +1178,7 @@ URL: /API/V040/groupAPI/changeGroupPermission.php
 ```
 
 **删除组 \| Delete Group**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/groupAPI/deleteGroup.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1207,6 +1212,7 @@ URL: /API/V040/groupAPI/deleteGroup.php
 ```
 
 **创建APPID \| Create APPID**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDKAPI/createAPPID.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1242,6 +1248,7 @@ URL: /API/V040/PDKAPI/createAPPID.php
 ```
 
 **修改APPID权限 \| Change APPID Permission**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDKAPI/changeAPPPermission.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1275,6 +1282,7 @@ URL: /API/V040/PDKAPI/changeAPPPermission.php
 ```
 
 **查看APPID信息 \| View APPID Info**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDKAPI/viewAPPIDInfo.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1343,6 +1351,7 @@ URL: /API/V040/PDKAPI/viewAPPIDInfo.php
 
 
 **转移APPID所有权 \| Change APPID Ownership**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDKAPI/changeAPPIDOwnership.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1376,6 +1385,7 @@ URL: /API/V040/PDKAPI/changeAPPIDOwnership.php
 ```
 
 **邀请管理APPID \| Invite to Manage APPID**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDKAPI/addManager.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1409,6 +1419,7 @@ URL: /API/V040/PDKAPI/addManager.php
 ```
 
 **接受管理APPID \| Accept Managing APPID**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDKAPI/acceptManager.php  
 方法(Method): POST  
 参数(Parameters):   
@@ -1442,6 +1453,7 @@ URL: /API/V040/PDKAPI/acceptManager.php
 ```
 
 **删除管理员/退出APPID/不接受管理 \| Delete Manager / Exit APPID Management / Not Accepting Management**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDKAPI/leaveAPPID.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1475,6 +1487,7 @@ URL: /API/V040/PDKAPI/leaveAPPID.php
 ```
 
 **更改APPID展示名 \| Change APPID Display Name**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDKAPI/changeAPPDisplayName.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1508,6 +1521,7 @@ URL: /API/V040/PDKAPI/changeAPPDisplayName.php
 ```
 
 **更改APPID登录回调地址 \| Change APPID's Login Callback URL**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDKAPI/changeAPPLoginCallBack.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1541,6 +1555,7 @@ URL: /API/V040/PDKAPI/changeAPPLoginCallBack.php
 ```
 
 **更改APPID用户删除回调地址 \| Change APPID's User Deletion Callback URL**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDKAPI/changeAPPDelCallBack.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1574,6 +1589,7 @@ URL: /API/V040/PDKAPI/changeAPPDelCallBack.php
 ```
 
 **删除APPID \| Delete APPID**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDKAPI/deleteAPPID.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1607,6 +1623,7 @@ URL: /API/V040/PDKAPI/deleteAPPID.php
 ```
 
 **列出APPID \| List APPID**  
+&#x2714; 已测试 / Tested  
 *此接口可以被用户自己调用, 只要他查的是自己的用户名*  
 URL: /API/V040/PDKAPI/listAPPID.php  
 方法(Method): POST  
@@ -1657,6 +1674,7 @@ URL: /API/V040/PDKAPI/listAPPID.php
 
 ## 公用PDK API定义 \| Public PDK API Declaration
 **第三方登录(用于BlueAirLive调用) \| 3rd Party Login(For BlueAirLive to call)**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDK/login.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1694,6 +1712,7 @@ URL: /API/V040/PDK/login.php
 ```
 
 **第三方登录跳转(用于BlueAirLive调用) \| 3rd Party Login Jump(For BlueAirLive to Call)**  
+&#x2714; 已测试 / Tested  
 URL: 用户自定义URL \| User-defined URL  
 方法(Method): GET  
 参数(Parameters):  
@@ -1706,6 +1725,7 @@ URL: 用户自定义URL \| User-defined URL
 *User will be directed to this page after successfully authing to the website*  
 
 **第三方用户删除通知(用于OPENAPI调用) \| 3rd Party User Deletion API(For OPENAPI to Call)**  
+&#x2714; 已测试 / Tested  
 URL: 用户自定义URL \| User-defined URL  
 方法(Method): POST  
 参数(Parameters):  
@@ -1717,6 +1737,7 @@ URL: 用户自定义URL \| User-defined URL
 *OPENAPI will curl to this page after a user wants to delete his/her account or he/she canceled the auth for the app*  
 
 **第三方Token验证(用于第三方调用) \| 3rd Party Token Verification(For 3rd party to call)**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDK/checkToken.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1751,6 +1772,7 @@ URL: /API/V040/PDK/checkToken.php
 
 **第三方权限查看 \| 3rd Party Permission View**  
 *查看可以访问的指定用户的权限 \| View permissions that are enabled on a specific user*  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDK/checkPermission.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1789,6 +1811,7 @@ URL: /API/V040/PDK/checkPermission.php
 ```
 
 **第三方用户信息调取(用于第三方调用) \| Third party user info read(For 3rd party to call)**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDK/getUserInfo.php  
 方法(Method): POST  
 参数(Parameters):  
@@ -1826,6 +1849,7 @@ URL: /API/V040/PDK/getUserInfo.php
 ```
 
 **第三方邮件发送(用于第三方调用) \| 3rd Party Email Service(For 3rd party to call)**  
+&#x2714; 已测试 / Tested  
 URL: /API/V040/PDK/sendMail.php  
 方法(Method): POST  
 参数(Parameters):  
