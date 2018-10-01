@@ -53,7 +53,7 @@ Unavailable Now
 
 |Cookie|类型(Type)|有效时间(available time)|详细信息(Description)|注解(Note)|属性(Property)|
 |-|-|-|-|-|-|
-|username|string|`$OPENAPISettings['TokenAvailableDuration']` = 3600*24*7|用户名(Username)|跟随Token更新(Renewed following token)|HTTPOnly|
+|username|string|`$OPENAPISettings['TokenAvailableDuration']` = `3600 * 24 * 7`|用户名(Username)|跟随Token更新(Renewed following token)|HTTPOnly|
 |token|string|`$OPENAPISettings['TokenAvailableDuration']`|登录Token(Login Credential)|此Token可以在被检查时刷新, 是否刷新取决于服务端设置. It can be renewed when checking token, depends on `$OPENAPISettings['RenewAPPTokenWhenChecking']`|HTTPOnly|
-|userInfo|string(json)|-1(临时性Cookie \| Temporary Cookie)|用户详细信息(User Detailed Info)|-|HTTPOnly|
+|userInfo|string(json)|-1(临时性Cookie \| Temporary Cookie)|用户详细信息(User Detailed Info)|每次都会被更新:-) \| It gets updated everytime :-)|HTTPOnly|
 |authedContents|string(json)|`$OPENAPISettings['TokenAvailableDuration']`|用户授权信息(User Auth Info)|每次登录和授权应用时得到更新(Updated everytime when logging in or authing apps), 且跟随token刷新+更新(and also renewed & updated when token is renewed), 另外每次授权应用后都在本地更新(Everytime user authed an app, it gets updated locally)|HTTPOnly|
