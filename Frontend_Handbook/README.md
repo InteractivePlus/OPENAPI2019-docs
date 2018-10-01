@@ -52,7 +52,7 @@ Unavailable Now
 #### 全局Cookie定义 \| Globally Stored Cookie Definition
 
 |Cookie|类型(Type)|有效时间(available time)|详细信息(Description)|注解(Note)|属性(Property)|
-|-|-|-|-|-|
+|-|-|-|-|-|-|
 |username|string|`$OPENAPISettings['TokenAvailableDuration']` = 3600*24*7|用户名(Username)|跟随Token更新(Renewed following token)|HTTPOnly|
 |token|string|`$OPENAPISettings['TokenAvailableDuration']`|登录Token(Login Credential)|此Token可以在被检查时刷新, 是否刷新取决于服务端设置. It can be renewed when checking token, depends on `$OPENAPISettings['RenewAPPTokenWhenChecking']`|HTTPOnly|
 |userInfo|string(json)|-1(临时性Cookie \| Temporary Cookie)|用户详细信息(User Detailed Info)|-|HTTPOnly|
