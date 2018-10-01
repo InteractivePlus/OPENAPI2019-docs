@@ -39,3 +39,21 @@ Unavailable Now
 ### Shared JS Function Naming Rules
 1. Function needs to be named using small camelcase.
 2. Functions in shared JS files MUST support multi-language, and the language selection parameter should be the last parameter for the function. This parameter will have the same value as the language / area identification code of the web page when the function is called.
+
+---
+
+## 前端开发规范 \| Front-end standardization
+### Cookie定义 \| Cookie Definition
+
+#### Cookie术语定义 \| Cookie Manual Specific Word Definition
+**更新 \| Update** - 用从服务端获取的数据替换Cookie储存的数据. \| Use the data from the server to replace the data stored in cookies.  
+**刷新 \| renew** - 重置Cookie持续时间 \| reset the expiration date of the cookie  
+
+#### 全局Cookie定义 \| Globally Stored Cookie Definition
+
+|Cookie|类型(Type)|有效时间(available time)|详细信息(Description)|注解(Note)|属性(Property)|
+|-|-|-|-|-|
+|username|string|`$OPENAPISettings['TokenAvailableDuration']` = 3600*24*7|用户名(Username)|跟随Token更新(Renewed following token)|HTTPOnly|
+|token|string|`$OPENAPISettings['TokenAvailableDuration']`|登录Token(Login Credential)|此Token可以在被检查时刷新, 是否刷新取决于服务端设置. It can be renewed when checking token, depends on `$OPENAPISettings['RenewAPPTokenWhenChecking']`|HTTPOnly|
+|userInfo|string(json)|-1(临时性Cookie \| Temporary Cookie)|用户详细信息(User Detailed Info)|-|HTTPOnly|
+|authedContents|string(json)|`$OPENAPISettings['TokenAvailableDuration']`|用户授权信息(User Auth Info)|每次登录和授权应用时得到更新(Updated everytime when logging in or authing apps), 且跟随token刷新+更新(and also renewed & updated when token is renewed), 另外每次授权应用后都在本地更新(Everytime user authed an app, it gets updated locally)|-|HTTPOnly|
